@@ -44,6 +44,7 @@ Omissions will be added later.
 - [x] Add Tailwind to my css
 - [x] Set webpack configurations to use Tailwind CSS
 - [x] Check index.html can be rendered with Tailwind CSS
+- [x] Install 'express'
 
 ##### Day 2
 

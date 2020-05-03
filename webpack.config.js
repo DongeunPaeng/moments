@@ -6,6 +6,7 @@ const ENTRY_FILE = path.resolve(__dirname, "src", "app.js");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 
 const config = {
+  mode: "development",
   entry: ENTRY_FILE,
   output: {
     path: OUTPUT_DIR,
