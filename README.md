@@ -10,30 +10,31 @@ Omissions will be added later.
 
 #### To do lists & used modules
 
-- [ ] server setup with **express**
+- [x] server setup with **express**
 - [ ] user authentication with **passport**
 - [ ] show messages with **express-flash**
-- [ ] build with **webpack & babel**
+- [x] build with **webpack & babel**
 - [ ] manage data with **mongoose & connect-mongo**
-- [ ] connect-mongo
 - [ ] handle file uploads with **multer**
 - [ ] save files with **aws-sdk & multer-s3**
-- [ ] log HTTP request with **morgan**
-- [ ] security with **helmet**
+- [x] log HTTP request with **morgan**
+- [x] security with **helmet**
 - [ ] store sessions with **express-session**
 - [ ] set cookies with **cookie-parser**
-- [ ] get req.body wiht **body-parser**
+- [x] get req.body wiht **body-parser**
 - [ ] npm scripts on windows with **cross-env**
 - [ ] AJAX requests with **axios**
 - [ ] get video file duration with **get-blob-duration**
-- [ ] make views with **pug**
-- [ ] make beautiful with **tailwind css**
+- [x] make views with **pug**
+- [x] make beautiful with **tailwind css**
+
+---
 
 #### Jobs to get done
 
 ##### Day 1
 
-- [x] Directory setup for build
+- [x] Directory setup for build (src, dist)
 - [x] Install webpack and webpack-cli
 - [x] Write scripts to run webpack and watch the files
 - [x] Install 'mini-css-extract-plugin' in order to extract css into separate files.
@@ -45,9 +46,18 @@ Omissions will be added later.
 - [x] Set webpack configurations to use Tailwind CSS
 - [x] Check index.html can be rendered with Tailwind CSS
 - [x] Install 'express'
+- [x] Make .env file
+- [x] Install 'nodemon'
+- [x] Install 'babel'
+- [x] Run server on port localhost:4000
+- [x] Install middlewares (morgan, compression, helmet, body-parser)
+- [x] Setup 'pug' view engine
+- [x] Make view folder
+- [x] Make a basic router
 
 ##### Day 2
 
+- [ ] Make MVC directory structure
 - [ ] Login/Logout
 - [ ] File upload/delete
 - [ ] Profile Editing
@@ -57,6 +67,8 @@ Omissions will be added later.
 - [ ] Comments
 - [ ] Message
 
+---
+
 #### Learnings
 
 _Day 1_<br/>
@@ -64,3 +76,13 @@ _Day 1_<br/>
 The official webpack documentation says **not to** use 'extract-text-webpack-plugin' for webpack v4 or above. I should use 'mini-css-extract-plugin' instead.
 
 It's recommended to use 'i' modifier when using Regexp to refer to a file name or extensions. (e.g. CSS or css)
+
+I need babel in order to use ES6 scripts. (e.g. import, etc.)
+
+Many errors are thrown when I try to convert server-side .js file through webpack. It is for client-side .js files.
+
+app.use means app.\* including app.get, app.delete, app.post, etc., and will take a bit more time to process.
+
+Order of express middlewares are **IMPORTANT**. Helmet comes first. Others come later.
+
+---
