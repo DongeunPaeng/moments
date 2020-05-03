@@ -3,7 +3,7 @@
 
 Moments is a small and cute video sharing platform.<br/>
 This project will include below parts.<br/>
-Omissions will be added later. 
+Omissions will be added later.
 
 ----
 
@@ -27,4 +27,15 @@ Omissions will be added later.
 - [ ] AJAX requests with **axios**
 - [ ] get video file duration with **get-blob-duration**
 - [ ] make views with **pug**
+- [ ] make beautiful with **tailwind css**
 
+#### Jobs to get done
+
+- [ ] Login/Logout
+- [ ] File upload/delete
+- [ ] Profile Editing
+- [ ] Apply CSS
+- [ ] Video Editing
+- [ ] Access control
+- [ ] Comments
+- [ ] Message
