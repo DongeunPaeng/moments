@@ -37,10 +37,13 @@ Omissions will be added later.
 - [x] Install webpack and webpack-cli
 - [x] Write scripts to run webpack and watch the files
 - [x] Install 'mini-css-extract-plugin' in order to extract css into separate files.
-- [x] Install 'postcss-loader' and 'css-loader'
-- [x] Install Tailwind
-- [ ] Add Tailwind to my CSS
-- [ ] Set webpack configurations to use Tailwind CSS
+- [x] Install 'postcss-loader' and 'css-loader' to load those files on webpack
+- [x] Install 'Tailwind'
+- [x] Install 'autoprefixer'
+- [x] Install 'postcss-cli'
+- [x] Add Tailwind to my css
+- [x] Set webpack configurations to use Tailwind CSS
+- [x] Check index.html can be rendered with Tailwind CSS
 
 ##### Day 2
 
@@ -58,3 +61,5 @@ Omissions will be added later.
 _Day 1_<br/>
 
 The official webpack documentation says **not to** use 'extract-text-webpack-plugin' for webpack v4 or above. I should use 'mini-css-extract-plugin' instead.
+
+It's recommended to use 'i' modifier when using Regexp to refer to a file name or extensions. (e.g. CSS or css)

@@ -1,5 +1,6 @@
 const path = require("path");
 const ExtractCSS = require("mini-css-extract-plugin");
+const autoprefixer = require("autoprefixer");
 
 const ENTRY_FILE = path.resolve(__dirname, "src", "app.js");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
@@ -12,14 +13,13 @@ const config = {
   },
   module: {
     rules: [
-      // Tailwind CSS 용으로 나중에 바꾸어야 함
       {
         test: /\.css$/i,
-        use: [ExtractCSS.loader, "css-loader"],
+        use: [ExtractCSS.loader, "css-loader", "postcss-loader"],
       },
     ],
   },
-  plugins: [new ExtractCSS()],
+  plugins: [new ExtractCSS({ filename: "style.css" })],
 };
 
 module.exports = config;
