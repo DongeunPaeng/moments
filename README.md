@@ -57,6 +57,11 @@ Omissions will be added later.
 
 ##### Day 2
 
+- [ ] Understand what babel polyfill is and what its role is
+- [ ] Fix 'import ...' error on the browser
+- [x] Serve static files
+- [x] Make webpack watch the files
+- [ ] Make front page (nav)
 - [ ] Make MVC directory structure
 - [ ] Login/Logout
 - [ ] File upload/delete

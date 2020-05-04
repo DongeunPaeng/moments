@@ -18,6 +18,7 @@ app.listen(PORT, handleListening);
 app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.resolve(__dirname, "views"));
+app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use(morgan("dev"));
 app.use(compression());
 app.use(bodyParser.json()); // meaning?

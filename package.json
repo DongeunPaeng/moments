@@ -4,8 +4,8 @@
   "description": "video sharing platform",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "nodemon --exec babel-node src/app.js && webpack --watch"
+    "build": "webpack -w",
+    "server": "nodemon --exec babel-node src/app.js"
   },
   "author": "Dongeun Paeng",
   "license": "ISC",

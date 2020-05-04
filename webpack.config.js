@@ -6,8 +6,8 @@ const ENTRY_FILE = path.resolve(__dirname, "src/assets/js", "main.js");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 
 const config = {
-  mode: "development",
   entry: ENTRY_FILE,
+  mode: "development",
   target: "node",
   output: {
     path: OUTPUT_DIR,
