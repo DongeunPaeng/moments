@@ -57,8 +57,12 @@ Omissions will be added later.
 
 ##### Day 2
 
+- [ ] Understand what __dirname is
+- [ ] Fix webpack.config.js using __dirname and path.resolve()
+- [ ] Understand what express.static is for and fix it to serve dist/main.js and dist/style.css
 - [ ] Understand what babel polyfill is and what its role is
-- [ ] Fix 'import ...' error on the browser
+- [x] Understand what babel-loader is for
+- [x] Fix 'import ...' error on the browser
 - [x] Serve static files
 - [x] Make webpack watch the files
 - [ ] Make front page (nav)
