@@ -18,7 +18,12 @@ app.listen(PORT, handleListening);
 app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.resolve(__dirname, "views"));
-app.use("/dist", express.static(path.join("../../dist"))); // 여기에 뭔가 문제가 있음
+app.use(
+  "/dist",
+  express.static(
+    path.resolve("/Users/user/desktop/programming/moments", "dist")
+  )
+);
 app.use(morgan("dev"));
 app.use(compression());
 app.use(bodyParser.json()); // meaning?

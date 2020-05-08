@@ -1,2 +1,2 @@
-import "./style.css"; // 여기서 뭔가 바꿔야 한다
+import "./style.css";
 console.log("laa");

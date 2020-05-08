@@ -57,9 +57,9 @@ Omissions will be added later.
 
 ##### Day 2
 
-- [ ] Understand what __dirname is
-- [ ] Fix webpack.config.js using __dirname and path.resolve()
-- [ ] Understand what express.static is for and fix it to serve dist/main.js and dist/style.css
+- [x] Understand what __dirname is
+- [x] Fix webpack.config.js using __dirname and path.resolve()
+- [x] Understand what express.static is for and fix it to serve dist/main.js and dist/style.css
 - [ ] Understand what babel polyfill is and what its role is
 - [x] Understand what babel-loader is for
 - [x] Fix 'import ...' error on the browser
@@ -75,6 +75,7 @@ Omissions will be added later.
 - [ ] Access control
 - [ ] Comments
 - [ ] Message
+- [ ] Understand what bodyparser does exactly, and what urlencoded means
 
 ---
 

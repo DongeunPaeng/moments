@@ -1,15 +1,15 @@
 const path = require("path");
 const ExtractCSS = require("mini-css-extract-plugin");
 
-const ENTRY_FILE = path.resolve("src/assets", "main.js"); // 원래대로 고치기
-const OUTPUT_DIR = path.resolve("dist"); // 원래대로 고치기
+const ENTRY_FILE = path.resolve("./src/assets", "main.js");
+const OUTPUT_DIR = path.resolve(__dirname, "dist", "assets");
 
 const config = {
   entry: ENTRY_FILE,
   mode: "development",
   output: {
     path: OUTPUT_DIR,
-    filename: "[name].js",
+    filename: "main.js",
   },
   module: {
     rules: [
