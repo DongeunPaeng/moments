@@ -5,7 +5,7 @@ const ENTRY_FILE = path.resolve("./src/assets", "main.js");
 const OUTPUT_DIR = path.resolve(__dirname, "dist", "assets");
 
 const config = {
-  entry: ENTRY_FILE,
+  entry: ["@babel/polyfill", ENTRY_FILE],
   mode: "development",
   output: {
     path: OUTPUT_DIR,

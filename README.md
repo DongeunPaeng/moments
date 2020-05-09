@@ -57,17 +57,26 @@ Omissions will be added later.
 
 ##### Day 2
 
-- [x] Understand what __dirname is
-- [x] Fix webpack.config.js using __dirname and path.resolve()
-- [x] Understand what express.static is for and fix it to serve dist/main.js and dist/style.css
-- [ ] Understand what babel polyfill is and what its role is
+- [x] Read through all babel documents
+- [x] Understand babel/node
+- [x] Understand what dirname is
+- [x] Fix webpack.config.js using dirname and path.resolve()
+- [x] Understand express.static and fix it to serve dist/main.js and dist/style.css
+- [x] Understand babel polyfill, core-js, regenerator-runtime/runtime
 - [x] Understand what babel-loader is for
 - [x] Fix 'import ...' error on the browser
 - [x] Serve static files
 - [x] Make webpack watch the files
-- [ ] Make front page (nav)
-- [ ] Make MVC directory structure
-- [ ] Login/Logout
+- [x] Make header with responsive navbar
+- [x] Make fake contents at home page
+
+##### Day 3
+
+- [ ] Populate cards up to 10 fake cards
+- [ ] Fix footer (center items)
+- [ ] Build and connect to mongoDB
+- [ ] Limit each image's size
+- [ ] Make Login/Logout
 - [ ] File upload/delete
 - [ ] Profile Editing
 - [ ] Apply CSS
@@ -81,7 +90,7 @@ Omissions will be added later.
 
 #### Learnings
 
-_Day 1_<br/>
+_Day 1_</br>
 
 The official webpack documentation says **not to** use 'extract-text-webpack-plugin' for webpack v4 or above. I should use 'mini-css-extract-plugin' instead.
 
@@ -96,3 +105,19 @@ app.use means app.\* including app.get, app.delete, app.post, etc., and will tak
 Order of express middlewares are **IMPORTANT**. Helmet comes first. Others come later.
 
 ---
+
+_Day 2_</br>
+
+Without express.static, I would have to make thousands of routers for every image files, etc.
+
+Installation of babel consists of installing two npm packages - @bable/core and @babel/cli.
+
+'babel' doesn't do anything out-of-the-box! It's the babel presets and plugins that do the work.
+
+@babel/preset-env is just one preset that includes many useful and generally accepted plugins, named 'env'.
+
+.babelrc is not recommended. Use babel.config.json especially when you're using a monorepo.
+
+babel-loader is made by webpack, not by babel. It's used for webpack to load babel to process .js files.
+
+Without babel-node, you can't execute app.js file if it is written in ES6.
