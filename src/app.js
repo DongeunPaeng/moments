@@ -18,12 +18,7 @@ app.listen(PORT, handleListening);
 app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.resolve(__dirname, "views"));
-app.use(
-  "/dist",
-  express.static(
-    path.resolve("/Users/user/desktop/programming/moments", "dist")
-  )
-);
+app.use("/dist", express.static(path.resolve(__dirname, "../dist")));
 app.use(morgan("dev"));
 app.use(compression());
 app.use(bodyParser.json()); // meaning?
