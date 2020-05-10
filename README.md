@@ -72,7 +72,8 @@ Omissions will be added later.
 
 ##### Day 3
 
-- [ ] Populate cards up to 10 fake cards
+- [x] Populate cards up to 10 fake cards
+- [ ] Brings cards closer to each other in the large screen
 - [ ] Fix footer (center items)
 - [ ] Build and connect to mongoDB
 - [ ] Limit each image's size
