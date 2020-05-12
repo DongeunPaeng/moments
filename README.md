@@ -11,7 +11,7 @@ Omissions will be added later.
 #### To do lists & used modules
 
 - [x] server setup with **express**
-- [ ] user authentication with **passport**
+- [x] user authentication with **passport**
 - [ ] show messages with **express-flash**
 - [x] build with **webpack & babel**
 - [ ] manage data with **mongoose & connect-mongo**
@@ -73,10 +73,20 @@ Omissions will be added later.
 ##### Day 3
 
 - [x] Populate cards up to 10 fake cards
-- [ ] Brings cards closer to each other in the large screen
-- [ ] Fix footer (center items)
+- [x] Brings cards closer to each other in the large screen
+- [x] Fix footer (center items)
+- [x] Make Join page
+- [ ] Check if passwords match
+- [x] Use passport to authenticate users
+- [ ] Make e-mail authentication
+- [ ] Make page to reset password
 - [ ] Build and connect to mongoDB
 - [ ] Limit each image's size
+- [x] Understand what bodyparser does exactly, and what urlencoded means
+
+##### Day 4
+
+- [ ] Separate router and controller
 - [ ] Make Login/Logout
 - [ ] File upload/delete
 - [ ] Profile Editing
@@ -85,7 +95,6 @@ Omissions will be added later.
 - [ ] Access control
 - [ ] Comments
 - [ ] Message
-- [ ] Understand what bodyparser does exactly, and what urlencoded means
 
 ---
 
@@ -122,3 +131,13 @@ Installation of babel consists of installing two npm packages - @bable/core and 
 babel-loader is made by webpack, not by babel. It's used for webpack to load babel to process .js files.
 
 Without babel-node, you can't execute app.js file if it is written in ES6.
+
+_Day 3_</br>
+
+To let body-parser to parse POSTed data, you have to put in 'name' attributes in your form. body-parser can't read id attributes.
+
+We need body-parser's urlencoded middleware to get contents from the client. Otherwise we will get empty object in req.body.
+
+When you submit form data with a POST request, that form data can be encoded in many ways. The default type for HTML forms is application/x-www-urlencoded. In this case, we need to use body-parser's urlencoded middleware to parse this data.
+
+Destructuring assignment makes life easier by replacing, for example, 'req.body.email' to just 'email' within a scope.
