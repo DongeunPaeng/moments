@@ -14,8 +14,17 @@ router.post("/join", (req, res) => {
   const {
     body: { email, password, password2 },
   } = req;
-  console.log(email, password, password2);
-  res.end();
+  if (password !== password2) {
+    res.render("join", { message: "Failed to confirm password." });
+  } else {
+    try {
+      console.log(email, password, password2);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      res.redirect("/");
+    }
+  }
 });
 
 export default router;

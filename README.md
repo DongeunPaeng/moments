@@ -76,6 +76,7 @@ Omissions will be added later.
 - [x] Brings cards closer to each other in the large screen
 - [x] Fix footer (center items)
 - [x] Make Join page
+- [ ] Understand try, catch, and finally
 - [ ] Check if passwords match
 - [x] Use passport to authenticate users
 - [ ] Make e-mail authentication
