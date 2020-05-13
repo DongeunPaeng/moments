@@ -1,10 +1,13 @@
+import "./db";
 import bodyParser from "body-parser";
 import compression from "compression";
+import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import router from "./routers/router";
+dotenv.config();
 
 const app = express();
 
@@ -23,5 +26,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(compression());
+app.use((req, res, next) => {
+  res.locals.siteName = "moments";
+  next();
+});
 
 app.use("/", router);

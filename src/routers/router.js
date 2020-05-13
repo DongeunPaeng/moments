@@ -10,7 +10,7 @@ router.get("/join", (req, res) => {
   res.render("join", { title: "join" });
 });
 
-router.post("/join", (req, res) => {
+router.post("/join", async (req, res) => {
   const {
     body: { email, password, password2 },
   } = req;
@@ -18,7 +18,9 @@ router.post("/join", (req, res) => {
     res.render("join", { message: "Failed to confirm password." });
   } else {
     try {
-      console.log(email, password, password2);
+      const user = await User({
+        email,
+      });
     } catch (error) {
       console.log(error);
     } finally {

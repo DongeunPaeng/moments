@@ -14,7 +14,7 @@ Omissions will be added later.
 - [x] user authentication with **passport**
 - [ ] show messages with **express-flash**
 - [x] build with **webpack & babel**
-- [ ] manage data with **mongoose & connect-mongo**
+- [x] manage data with **mongoose & connect-mongo**
 - [ ] handle file uploads with **multer**
 - [ ] save files with **aws-sdk & multer-s3**
 - [x] log HTTP request with **morgan**
@@ -76,14 +76,24 @@ Omissions will be added later.
 - [x] Brings cards closer to each other in the large screen
 - [x] Fix footer (center items)
 - [x] Make Join page
-- [ ] Understand try, catch, and finally
-- [ ] Make locals middleware to send messages from server to main.pug
-- [ ] Build and connect to mongoDB
+- [x] Understand try, catch, and finally
+- [x] Install 'mongoose'
+- [x] Install 'dotenv' to bring variables from .env file into process.env
+- [x] Configure mongoose options - useNewUrlParser, useFindAndModify
+- [x] Build and connect to mongoDB
+- [x] Make User, Video, Comments Schema
+- [x] Install 'passport'
+- [x] Install 'passport-local-mongoose' to easily register new users
+- [x] Make passport.js file to configure passport-local-mongoose methods
+- [ ] Understand serialize/deserialize user and passport.js configuration
+- [ ] Study about necessity of 'next' parameter in postJoin
+- [ ] Insert new users to MongoDB
 - [ ] Make e-mail authentication
 - [ ] Make page to reset password
+- [ ] Understand when to use cookie-parser and cookie store
 - [ ] Limit each image's size
 - [x] Check if passwords match
-- [x] Use passport to authenticate users
+- [ ] Use passport to authenticate users
 - [x] Understand what bodyparser does exactly, and what urlencoded means
 
 ##### Day 4
@@ -143,3 +153,7 @@ We need body-parser's urlencoded middleware to get contents from the client. Oth
 When you submit form data with a POST request, that form data can be encoded in many ways. The default type for HTML forms is application/x-www-urlencoded. In this case, we need to use body-parser's urlencoded middleware to parse this data.
 
 Destructuring assignment makes life easier by replacing, for example, 'req.body.email' to just 'email' within a scope.
+
+_Day 4_</br>
+
+It seems like I have to use square brackets to join(?) another Schema to the Schema I'm building. For example, if I want to connect a User with his/her Comments, I have to write like this: comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]
