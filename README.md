@@ -77,12 +77,13 @@ Omissions will be added later.
 - [x] Fix footer (center items)
 - [x] Make Join page
 - [ ] Understand try, catch, and finally
-- [ ] Check if passwords match
-- [x] Use passport to authenticate users
+- [ ] Make locals middleware to send messages from server to main.pug
+- [ ] Build and connect to mongoDB
 - [ ] Make e-mail authentication
 - [ ] Make page to reset password
-- [ ] Build and connect to mongoDB
 - [ ] Limit each image's size
+- [x] Check if passwords match
+- [x] Use passport to authenticate users
 - [x] Understand what bodyparser does exactly, and what urlencoded means
 
 ##### Day 4
