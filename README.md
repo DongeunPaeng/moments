@@ -19,8 +19,7 @@ Omissions will be added later.
 - [ ] save files with **aws-sdk & multer-s3**
 - [x] log HTTP request with **morgan**
 - [x] security with **helmet**
-- [ ] store sessions with **express-session**
-- [ ] set cookies with **cookie-parser**
+- [x] store sessions with **express-session**
 - [x] get req.body wiht **body-parser**
 - [ ] npm scripts on windows with **cross-env**
 - [ ] AJAX requests with **axios**
@@ -85,6 +84,8 @@ Omissions will be added later.
 - [x] Install 'passport'
 - [x] Install 'passport-local-mongoose' to easily register new users
 - [x] Make passport.js file to configure passport-local-mongoose methods
+- [x] Add passport.initialize middleware in app.js
+- [x] Install 'express-session'
 - [ ] Understand serialize/deserialize user and passport.js configuration
 - [ ] Study about necessity of 'next' parameter in postJoin
 - [ ] Insert new users to MongoDB
@@ -93,7 +94,7 @@ Omissions will be added later.
 - [ ] Understand when to use cookie-parser and cookie store
 - [ ] Limit each image's size
 - [x] Check if passwords match
-- [ ] Use passport to authenticate users
+- [x] Use passport to authenticate users
 - [x] Understand what bodyparser does exactly, and what urlencoded means
 
 ##### Day 4
@@ -126,8 +127,6 @@ app.use means app.\* including app.get, app.delete, app.post, etc., and will tak
 
 Order of express middlewares are **IMPORTANT**. Helmet comes first. Others come later.
 
----
-
 _Day 2_</br>
 
 Without express.static, I would have to make thousands of routers for every image files, etc.
@@ -154,6 +153,6 @@ When you submit form data with a POST request, that form data can be encoded in 
 
 Destructuring assignment makes life easier by replacing, for example, 'req.body.email' to just 'email' within a scope.
 
-_Day 4_</br>
-
 It seems like I have to use square brackets to join(?) another Schema to the Schema I'm building. For example, if I want to connect a User with his/her Comments, I have to write like this: comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]
+
+Passport serializes and deserializes user instances to and from the session to enable persistent login sessions. This will make possible to use req.user anywhere in the application.
