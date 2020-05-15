@@ -31,9 +31,8 @@ app.use(compression());
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
-    resave: false, // what does this mean?
-    saveUninitialized: true, // what does this mean?
-    cookie: { secure: true }, // what does this mean?
+    resave: false,
+    saveUninitialized: false,
   })
 );
 app.use(passport.initialize());
