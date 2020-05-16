@@ -88,10 +88,18 @@ Omissions will be added later.
 - [x] Add passport.initialize middleware in app.js
 - [x] Install 'express-session'
 - [x] Understand serialize/deserialize methods and passport.js configuration
-- [ ] Use nodemailer to make e-mail authentication
-- [ ] Insert new users to MongoDB
+- [x] Import crypto
+- [x] Add emailVerified and verificationKey to User model
+- [x] Use nodemailer to make e-mail authentication
+- [x] Send user to pre-email-verification page after join activity
+- [x] Insert new users to MongoDB
+- [x] Install 'connect-mongo'
+- [x] Make login page
+- [x] Install 'passport-local'
+- [ ] Fix 'unknown strategy local' error
+- [ ] Study how to make auto-login right after join
+- [ ] Test user flow from join to login to logout
 - [ ] Make page to reset password
-- [ ] Understand when to use cookie-parser and cookie store
 - [ ] Limit each image's size
 - [ ] Study about necessity of 'next' parameter in postJoin
 - [x] Check if passwords match
@@ -100,6 +108,8 @@ Omissions will be added later.
 
 ##### Day 4
 
+- [ ] Modify header.pug to show different menu to loggedUser
+- [ ] Apply work sans font to body texts
 - [ ] Recap when to enable resave and saveUninitialized options
 - [ ] Separate router and controller
 - [ ] Make Login/Logout
@@ -155,7 +165,7 @@ When you submit form data with a POST request, that form data can be encoded in 
 
 Destructuring assignment makes life easier by replacing, for example, 'req.body.email' to just 'email' within a scope.
 
-It seems like I have to use square brackets to join(?) another Schema to the Schema I'm building. For example, if I want to connect a User with his/her Comments, I have to write like this: comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]
+It seems like I have to use square brackets to join(?) another Schema to the Schema I'm building. For example, if I want to connect a User with his/her Comments, I have to write like `comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]`
 
 Passport serializes and deserializes user instances to and from the session to enable persistent login sessions. This will make possible to use req.user anywhere in the application.
 
@@ -166,3 +176,7 @@ Actually, it's passport.deserializeUser method that generates and pass the 'req.
 If I set express-session option resave to true, the session will be saved every time regardless if there was a change in the session.
 
 If I set express-session option saveUninitialized to false, the session will not save any session which is not initialized(empty).
+
+If I don't need a User document returned after updating it, I can use updateOne method instead of findOneAndUpdate.
+
+When you're using mongoose, you don't need to use mongoDB's update operator(e.g. updateOne); rather, you can update the object like `user.emailVerified = true.`

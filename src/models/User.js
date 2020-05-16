@@ -4,10 +4,12 @@ import passportLocalMongoose from "passport-local-mongoose";
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  email: String,
+  email: { type: String, required: "Email is required!" },
   date: { type: Date, default: Date.now },
   kakaoId: Number,
   comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  emailVerified: { type: Boolean, required: true, default: false },
+  verificationKey: { type: String, required: true },
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: "email" });

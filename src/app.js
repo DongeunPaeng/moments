@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import express from "express";
 import session from "express-session";
 import helmet from "helmet";
+import mongoose from "mongoose";
+import mongostore from "connect-mongo";
 import morgan from "morgan";
 import passport from "passport";
 import path from "path";
@@ -12,6 +14,7 @@ import router from "./routers/router";
 dotenv.config();
 
 const app = express();
+const cookiestore = mongostore(session);
 
 const PORT = process.env.PORT || 4000;
 const handleListening = () => {
@@ -33,12 +36,15 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: new cookiestore({ mongooseConnection: mongoose.connection }),
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
   res.locals.siteName = "moments";
+  res.locals.loggedUser = req.user || null;
+  console.log(res.locals.loggedUser);
   next();
 });
 
