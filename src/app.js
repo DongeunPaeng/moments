@@ -9,8 +9,9 @@ import mongoose from "mongoose";
 import mongostore from "connect-mongo";
 import morgan from "morgan";
 import passport from "passport";
+import "./passport";
 import path from "path";
-import router from "./routers/router";
+import globalRouter from "./routers/globalRouter";
 dotenv.config();
 
 const app = express();
@@ -44,8 +45,7 @@ app.use(passport.session());
 app.use((req, res, next) => {
   res.locals.siteName = "moments";
   res.locals.loggedUser = req.user || null;
-  console.log(res.locals.loggedUser);
   next();
 });
 
-app.use("/", router);
+app.use("/", globalRouter);

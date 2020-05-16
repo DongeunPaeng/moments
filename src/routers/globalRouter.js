@@ -4,17 +4,17 @@ import nodemailer from "nodemailer";
 import passport from "passport";
 import User from "../models/User";
 
-const router = express.Router();
+const globalRouter = express.Router();
 
-router.get("/", (req, res) => {
+globalRouter.get("/", (req, res) => {
   res.render("home", { title: "home" });
 });
 
-router.get("/join", (req, res) => {
+globalRouter.get("/join", (req, res) => {
   res.render("join", { title: "join" });
 });
 
-router.post("/join", async (req, res) => {
+globalRouter.post("/join", async (req, res) => {
   const {
     body: { email, password, password2 },
   } = req;
@@ -76,24 +76,31 @@ router.post("/join", async (req, res) => {
   }
 });
 
-router.get("/confirmEmail", async (req, res) => {
+globalRouter.get("/confirmEmail", async (req, res) => {
   try {
     const user = await User.findOne({ verificationKey: req.query.key });
     user.emailVerified = true;
     user.save();
+    res.render("welcome", {
+      title: "welcome",
+      message: `Nice to meet you ${user.email}!`,
+    });
   } catch (err) {
     console.log(err);
     res.render("join", { title: "join", message: "There was an error!" });
-  } finally {
-    res.render("welcome", { title: "welcome", message: "Nice to meet you!" });
   }
 });
 
-router.get("/login", (req, res) => {
+globalRouter.get("/login", (req, res) => {
   res.render("login", { title: "login" });
 });
 
-router.post(
+globalRouter.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
+
+globalRouter.post(
   "/login",
   passport.authenticate("local", {
     failureRedirect: "/login",
@@ -101,4 +108,4 @@ router.post(
   })
 );
 
-export default router;
+export default globalRouter;

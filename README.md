@@ -96,19 +96,18 @@ Omissions will be added later.
 - [x] Install 'connect-mongo'
 - [x] Make login page
 - [x] Install 'passport-local'
-- [ ] Fix 'unknown strategy local' error
-- [ ] Study how to make auto-login right after join
+- [x] Modify header.pug to show different menu to loggedUser
+- [x] Split routers and make MVC structure
+- [ ] Make user logged in right after register
 - [ ] Test user flow from join to login to logout
 - [ ] Make page to reset password
 - [ ] Limit each image's size
-- [ ] Study about necessity of 'next' parameter in postJoin
 - [x] Check if passwords match
 - [x] Use passport to authenticate users
 - [x] Understand what bodyparser does exactly, and what urlencoded means
 
 ##### Day 4
 
-- [ ] Modify header.pug to show different menu to loggedUser
 - [ ] Apply work sans font to body texts
 - [ ] Recap when to enable resave and saveUninitialized options
 - [ ] Separate router and controller
@@ -180,3 +179,5 @@ If I set express-session option saveUninitialized to false, the session will not
 If I don't need a User document returned after updating it, I can use updateOne method instead of findOneAndUpdate.
 
 When you're using mongoose, you don't need to use mongoDB's update operator(e.g. updateOne); rather, you can update the object like `user.emailVerified = true.`
+
+I can make a new user log in right after he/she registers by adding 'next' parameter in postJoin middleware.

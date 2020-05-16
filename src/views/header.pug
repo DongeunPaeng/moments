@@ -3,9 +3,13 @@ nav.flex.items-center.justify-between.flex-wrap.bg-gray-800.px-6.py-4
         a(href='/').font-semibold.text-lg.tracking-tight #{siteName}
     .block
         .text-sm(class='lg:flex-grow')
-            a.mt-4.text-white.mr-4(href='join', class='lg:inline-block lg:mt-0 hover:text-white')
-                | Join
-            a.mt-4.text-white.mr-4(href='login', class='lg:inline-block lg:mt-0 hover:text-white')
-                | Login
-
-//- 로그인 한 후에는 어떻게 보여줄지 나중에 바꾸기
+            if !loggedUser
+                a.mt-4.text-white.mr-4(href='join', class='lg:inline-block lg:mt-0 hover:text-white')
+                    | Join
+                a.mt-4.text-white.mr-4(href='login', class='lg:inline-block lg:mt-0 hover:text-white')
+                    | Login
+            else
+                a.mt-4.text-white.mr-4(href='logout', class='lg:inline-block lg:mt-0 hover:text-white')
+                    | Logout
+                a.mt-4.text-white.mr-4.font-bold(href='#', class='lg:inline-block lg:mt-0 hover:text-white')
+                    | #{loggedUser.email}
