@@ -98,8 +98,14 @@ Omissions will be added later.
 - [x] Install 'passport-local'
 - [x] Modify header.pug to show different menu to loggedUser
 - [x] Split routers and make MVC structure
-- [ ] Make user logged in right after register
-- [ ] Test user flow from join to login to logout
+- [x] Make user logged in right after register
+- [x] Study how to process postLogin with a user who's just registered
+- [x] Test user flow from join to login to logout
+- [ ] Fix postLogin
+- [ ] Fix getConfirmEmail - header changes after refresh
+- [ ] Enable delete account
+- [ ] Enable duplicate login
+- [ ] Fix login page in mobile view
 - [ ] Make page to reset password
 - [ ] Limit each image's size
 - [x] Check if passwords match
@@ -180,4 +186,4 @@ If I don't need a User document returned after updating it, I can use updateOne 
 
 When you're using mongoose, you don't need to use mongoDB's update operator(e.g. updateOne); rather, you can update the object like `user.emailVerified = true.`
 
-I can make a new user log in right after he/she registers by adding 'next' parameter in postJoin middleware.
+I can make a new user log in right after he/she registers by adding req.login(user) inside the postJoin function.

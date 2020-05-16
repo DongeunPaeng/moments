@@ -12,6 +12,7 @@ import passport from "passport";
 import "./passport";
 import path from "path";
 import globalRouter from "./routers/globalRouter";
+import userRouter from "./routers/userRouter";
 dotenv.config();
 
 const app = express();
@@ -49,3 +50,4 @@ app.use((req, res, next) => {
 });
 
 app.use("/", globalRouter);
+app.use("/users", userRouter);

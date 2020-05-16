@@ -1,17 +1,18 @@
 extends main
 block content
-    .container.max-w-xs(class='md:max-w-sm').mb-4.mt-6.mx-auto
+    .container.max-w-xs(class='md:max-w-sm lg:mt-32').mb-4.mt-6.mx-auto
         form.bg-white.shadow-lg.rounded.px-8.pt-6.pb-8.mb-4(action="/join" method="post")
             .mb-4
                 label.block.text-gray-600.text-sm.font-bold.mb-2(for="email") E-mail
                 input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="email" type="text")
+                p.text-gray-600.text-xs We'll #[strong send you an e-mail] to verify your account! 😁
             .mb-4
                 label.block.text-gray-600.text-sm.font-bold.mb-2(for="password") Password
                 input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="password" type="password")
             .mb-4
                 label.block.text-gray-600.text-sm.font-bold.mb-2(for="password2") Confirm Password
                 input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="password2" type="password")
-                p.text-gray-600.text-xs Is your password strong enough? 🙄
+                p.text-gray-600.text-xs Let's make it strong and long enough! 🔒
             .flex.items-center.justify-between
                 button.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Join
                 a.inline-block.align-baseline.font-bold.text-sm.text-gray-600(class='hover:text-gray-800' href="/reset") Forgot password?

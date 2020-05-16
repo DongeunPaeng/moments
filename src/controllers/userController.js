@@ -1,5 +1,6 @@
-import nodemailer from "nodemailer"
-import passport from "passport"
+import crypto from "crypto";
+import nodemailer from "nodemailer";
+import passport from "passport";
 import User from "../models/User";
 
 export const home = (req, res) => {
@@ -8,7 +9,7 @@ export const home = (req, res) => {
 
 export const getJoin = (req, res) => {
   res.render("join", { title: "join" });
-});
+};
 
 export const postJoin = async (req, res) => {
   const {
@@ -70,35 +71,71 @@ export const postJoin = async (req, res) => {
       });
     }
   }
-});
+};
 
 export const getConfirmEmail = async (req, res) => {
   try {
     const user = await User.findOne({ verificationKey: req.query.key });
     user.emailVerified = true;
     user.save();
-    res.render("welcome", {
-      title: "welcome",
-      message: `Nice to meet you ${user.email}!`,
+    await req.login(user, function (err) {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect("/");
     });
   } catch (err) {
     console.log(err);
     res.render("join", { title: "join", message: "There was an error!" });
   }
-});
+};
 
 export const getLogin = (req, res) => {
   res.render("login", { title: "login" });
-});
+};
 
 export const getLogout = (req, res) => {
   req.logout();
   res.redirect("/");
-});
+};
 
-export const postLogin =
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    successRedirect: "/",
-  })
-);
+export const postLogin = async (req, res) => {
+  const {
+    body: { email },
+  } = req;
+  const user = await User.findOne({ email });
+  console.log(user);
+  try {
+    if (user.emailVerified !== true) {
+      res.render("wait", {
+        title: "wait",
+        message: `An email for verification sent to ${email}`,
+      });
+    } else {
+      passport.authenticate("local", {
+        failureRedirect: "/login", // this part suddenly isn't working! I can't get user here.
+        successRedirect: "/", // this part suddenly isn't working!
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.redirect("/login");
+  }
+};
+
+export const detail = (req, res) => {
+  if (!req.user) {
+    res.redirect("/");
+  } else {
+    res.render("detail", { title: "detail" });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const user = User.findById(req.user.id);
+    console.log(user);
+  } catch (err) {
+    console.log(err);
+  }
+};

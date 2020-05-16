@@ -1,0 +1,10 @@
+
+extends main
+block content
+    .flex.items-center.justify-between.flex-wrap.pt-6.pb-1.px-6.mb-3.text-gray-600.font-bold
+    .flex.items-center.justify-center.flex-wrap.pb-1.px-6
+        .max-w-sm.rounded.overflow-hidden.shadow-lg.m-2
+            .px-6.py-4
+                .font-bold.text-xl.mb-2=loggedUser.email
+                a(href=`/user/delete/${loggedUser.id}`)
+                    button.bg-red-600.text-white.font-bold.py-2.px-4.mt-5.rounded(class='hover:bg-red-800', type="submit") Delete Account
