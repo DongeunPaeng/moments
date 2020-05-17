@@ -34,7 +34,7 @@ export const postJoin = async (req, res) => {
         emailVerified: false,
         verificationKey,
       });
-      await User.register(user, password); // passport-local-mongoose does this?
+      await User.register(user, password);
 
       const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -99,29 +99,36 @@ export const getLogout = (req, res) => {
   res.redirect("/");
 };
 
-export const postLogin = async (req, res) => {
+export const postConfirmEmail = async (req, res, next) => {
   const {
     body: { email },
   } = req;
   const user = await User.findOne({ email });
-  console.log(user);
-  try {
-    if (user.emailVerified !== true) {
-      res.render("wait", {
-        title: "wait",
-        message: `An email for verification sent to ${email}`,
-      });
-    } else {
-      passport.authenticate("local", {
-        failureRedirect: "/login", // this part suddenly isn't working! I can't get user here.
-        successRedirect: "/", // this part suddenly isn't working!
-      });
+  if (!user) {
+    res.render("join", { message: "Join now!" });
+  } else {
+    try {
+      console.log("start trying");
+      if (user.emailVerified !== true) {
+        console.log(`you're email is not verified`);
+        res.render("wait", {
+          title: "wait",
+          message: `An email for verification sent to ${email}`,
+        });
+      } else {
+        next();
+      }
+    } catch (err) {
+      console.log(err);
+      res.redirect("/login");
     }
-  } catch (err) {
-    console.log(err);
-    res.redirect("/login");
   }
 };
+
+export const postLogin = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+});
 
 export const detail = (req, res) => {
   if (!req.user) {
@@ -133,8 +140,34 @@ export const detail = (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const user = User.findById(req.user.id);
-    console.log(user);
+    await User.findByIdAndRemove(req.user.id);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getChangePassword = (req, res) => {
+  res.render("changePassword");
+};
+
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, newPassword2 },
+  } = req;
+  console.log(oldPassword, newPassword, newPassword2);
+  try {
+    if (newPassword !== newPassword2) {
+      res.redirect("/users/change-password");
+    } else {
+      const user = await User.findById(req.user.id);
+      user.changePassword(oldPassword, newPassword, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
+    res.redirect("/");
   } catch (err) {
     console.log(err);
   }

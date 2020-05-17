@@ -20,7 +20,7 @@ Omissions will be added later.
 - [x] log HTTP request with **morgan**
 - [x] security with **helmet**
 - [x] store sessions with **express-session & connect-mongo**
-- [ ] Authenticate user with **nodemailer**
+- [x] Authenticate user with **nodemailer**
 - [x] get req.body wiht **body-parser**
 - [ ] npm scripts on windows with **cross-env**
 - [ ] AJAX requests with **axios**
@@ -101,19 +101,23 @@ Omissions will be added later.
 - [x] Make user logged in right after register
 - [x] Study how to process postLogin with a user who's just registered
 - [x] Test user flow from join to login to logout
-- [ ] Fix postLogin
-- [ ] Fix getConfirmEmail - header changes after refresh
-- [ ] Enable delete account
-- [ ] Enable duplicate login
-- [ ] Fix login page in mobile view
-- [ ] Make page to reset password
-- [ ] Limit each image's size
+- [x] Fix postLogin
+- [x] Fix getConfirmEmail - header changes after refresh
+- [x] Enable delete account
 - [x] Check if passwords match
 - [x] Use passport to authenticate users
 - [x] Understand what bodyparser does exactly, and what urlencoded means
 
 ##### Day 4
 
+- [x] Enable duplicate login
+- [x] Fix login page in mobile view
+- [x] Make page to reset password
+- [x] Install 'express-flash'
+- [ ] Make animation for flash
+- [ ] Add flash messages to every login/password cases
+- [ ] Understand mixin in pug
+- [ ] Limit each image's size
 - [ ] Apply work sans font to body texts
 - [ ] Recap when to enable resave and saveUninitialized options
 - [ ] Separate router and controller
@@ -125,6 +129,7 @@ Omissions will be added later.
 - [ ] Access control
 - [ ] Comments
 - [ ] Message
+- [ ] Ask user if he/she is certain to delete his/her account (client-side JS)
 
 ---
 
@@ -164,26 +169,34 @@ _Day 3_</br>
 
 To let body-parser to parse POSTed data, you have to put in 'name' attributes in your form. body-parser can't read id attributes.
 
-We need body-parser's urlencoded middleware to get contents from the client. Otherwise we will get empty object in req.body.
+We need body-parser's urlencoded middleware to get contents from the client. Otherwise we will get empty object in `req.body`.
 
 When you submit form data with a POST request, that form data can be encoded in many ways. The default type for HTML forms is application/x-www-urlencoded. In this case, we need to use body-parser's urlencoded middleware to parse this data.
 
-Destructuring assignment makes life easier by replacing, for example, 'req.body.email' to just 'email' within a scope.
+Destructuring assignment makes life easier by replacing, for example, `req.body.email` to just 'email' within a scope.
 
 It seems like I have to use square brackets to join(?) another Schema to the Schema I'm building. For example, if I want to connect a User with his/her Comments, I have to write like `comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]`
 
 Passport serializes and deserializes user instances to and from the session to enable persistent login sessions. This will make possible to use req.user anywhere in the application.
 
-To use passport.serializeUser and passport.deserializeUser (session) I have to use express-session first.
+To use `passport.serializeUser` and `passport.deserializeUser` (session) I have to use express-session first.
 
-Actually, it's passport.deserializeUser method that generates and pass the 'req.user'.
+Actually, it's `passport.deserializeUser` method that generates and pass the `req.user`.
 
 If I set express-session option resave to true, the session will be saved every time regardless if there was a change in the session.
 
-If I set express-session option saveUninitialized to false, the session will not save any session which is not initialized(empty).
+If I set express-session option `saveUninitialized` to false, the session will not save any session which is not initialized(empty).
 
-If I don't need a User document returned after updating it, I can use updateOne method instead of findOneAndUpdate.
+If I don't need a User document returned after updating it, I can use `updateOne` method instead of `findOneAndUpdate`.
 
-When you're using mongoose, you don't need to use mongoDB's update operator(e.g. updateOne); rather, you can update the object like `user.emailVerified = true.`
+When you're using mongoose, you don't need to use mongoDB's update operator(e.g. `updateOne`); rather, you can update the object like `user.emailVerified = true.`
 
-I can make a new user log in right after he/she registers by adding req.login(user) inside the postJoin function.
+I can make a new user log in right after he/she registers by adding `req.login(user)` inside the `postJoin` function.
+
+I couldn't make async function and put `passport.authenticate` inside the function. So I made another function and gave it the 'next' parameter to move onto `passport.authenticate(postLogin)`
+
+When you find a user using `User`, don't forget to put async and await; otherwise you'll get a very long Query object instead.
+
+_Day 4_</br>
+
+Unlike the official document, I don't need `cookie-parser` to use `express-flash`.

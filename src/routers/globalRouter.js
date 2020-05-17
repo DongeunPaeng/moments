@@ -6,6 +6,7 @@ import {
   getConfirmEmail,
   getLogin,
   getLogout,
+  postConfirmEmail,
   postLogin,
 } from "../controllers/userController";
 
@@ -17,6 +18,6 @@ globalRouter.post("/join", postJoin);
 globalRouter.get("/confirmEmail", getConfirmEmail);
 globalRouter.get("/login", getLogin);
 globalRouter.get("/logout", getLogout);
-globalRouter.post("/login", postLogin);
+globalRouter.post("/login", postConfirmEmail, postLogin);
 
 export default globalRouter;

@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import dotenv from "dotenv";
 import express from "express";
+import flash from "express-flash";
 import session from "express-session";
 import helmet from "helmet";
 import mongoose from "mongoose";
@@ -43,6 +44,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 app.use((req, res, next) => {
   res.locals.siteName = "moments";
   res.locals.loggedUser = req.user || null;

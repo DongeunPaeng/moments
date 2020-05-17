@@ -8,8 +8,8 @@ block content
             .mb-4
                 label.block.text-gray-600.text-sm.font-bold.mb-2(for="password") Password
                 input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="password" type="password")
-            .flex.items-center.justify-between
-                button.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Log in
-                a.inline-block.align-baseline.font-bold.text-sm.text-gray-600(class='hover:text-gray-800' href="/join") Not a member?
-                a.inline-block.align-baseline.font-bold.text-sm.text-gray-600(class='hover:text-gray-800' href="/reset") Forgot password?
-    .container.max-w-xs.mx-auto.my-3.content-center.text-center.text-red-500=message
+            .items-center.justify-between(class='md:flex')
+                button.my-2.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Log in
+                a.my-3.block.align-baseline.font-bold.text-sm.text-gray-600(class='hover:text-gray-800' href="/join") Not a member?
+                a.my-3.block.align-baseline.font-bold.text-sm.text-gray-600(class='hover:text-gray-800' href="/reset") Forgot password?
+    .container.max-w-xs.mx-auto.my-3.content-center.text-center.text-red-500 message
