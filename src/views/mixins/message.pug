@@ -1,2 +1,2 @@
 mixin message(message={})
-    .container.max-w-xs(class='md:max-w-sm').mb-4.mt-6.mx-auto Test
+    .py-3.text-center.container.max-w-xs(class='md:max-w-sm bg-'+message.color+'-100 border border-'+message.color+'-400 text-'+message.color+'-700 rounded relative').mb-4.mt-6.mx-auto.font-bold=message.text

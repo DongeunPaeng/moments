@@ -4,8 +4,8 @@ import passport from "passport";
 import User from "../models/User";
 
 export const home = (req, res) => {
+  req.flash("success", "Welcome!");
   res.render("home", { title: "home" });
-  req.flash("info", "Test message!");
 };
 
 export const getJoin = (req, res) => {
@@ -17,8 +17,8 @@ export const postJoin = async (req, res) => {
     body: { email, password, password2 },
   } = req;
   if (password !== password2) {
-    res.render("join", { title: "join" });
     req.flash("error", "Passwords don't match!");
+    res.render("join", { title: "join" });
   } else {
     try {
       const key_one = crypto.randomBytes(256).toString("hex").substr(100, 5);
@@ -58,16 +58,14 @@ export const postJoin = async (req, res) => {
         } else {
           res.render("wait", {
             title: "wait",
-            message: `An email for verification sent to ${email}`,
           });
         }
       });
+      req.flash("success", "E-mail has been successfully sent!");
     } catch (error) {
       console.log(error);
-      res.render("join", {
-        title: "join",
-        message: "oops! something went wrong...",
-      });
+      req.flash("error", "Something went wrong...");
+      res.render("join", { title: "join" });
     }
   }
 };
@@ -83,9 +81,10 @@ export const getConfirmEmail = async (req, res) => {
       }
       return res.redirect("/");
     });
+    req.flash("success", "You're verified!"); // check if this appears
   } catch (err) {
-    console.log(err);
-    res.render("join", { title: "join", message: "There was an error!" });
+    req.flash("error", "Verification failed...");
+    res.render("join", { title: "join" });
   }
 };
 
@@ -95,6 +94,7 @@ export const getLogin = (req, res) => {
 
 export const getLogout = (req, res) => {
   req.logout();
+  req.flash("info", "See you later!");
   res.redirect("/");
 };
 
@@ -107,18 +107,15 @@ export const postConfirmEmail = async (req, res, next) => {
     res.render("join", { message: "Join now!" });
   } else {
     try {
-      console.log("start trying");
       if (user.emailVerified !== true) {
-        console.log(`you're email is not verified`);
-        res.render("wait", {
-          title: "wait",
-          message: `An email for verification sent to ${email}`,
-        });
+        req.flash("error", "Email not found"); // nothing comes up!
+        res.render("wait", { title: "wait" });
       } else {
         next();
       }
     } catch (err) {
       console.log(err);
+      req.flash("error", "Something went wrong...");
       res.redirect("/login");
     }
   }
@@ -127,6 +124,8 @@ export const postConfirmEmail = async (req, res, next) => {
 export const postLogin = passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
+  successFlash: "Hi, nice to meet you!",
+  failureFlash: "Please check your email or password",
 });
 
 export const detail = (req, res) => {
@@ -140,6 +139,7 @@ export const detail = (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     await User.findByIdAndRemove(req.user.id);
+    req.flash("info", "Hope to see you again!");
     res.redirect("/");
   } catch (err) {
     console.log(err);
@@ -166,6 +166,7 @@ export const postChangePassword = async (req, res) => {
         }
       });
     }
+    req.flash("success", "Password updated!");
     res.redirect("/");
   } catch (err) {
     console.log(err);

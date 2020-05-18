@@ -116,9 +116,7 @@ Omissions will be added later.
 - [x] Install 'express-flash'
 - [x] Understand mixin in pug
 - [x] Understand how to make variables in pug
-- [ ] Understand != syntax in pug
-- [ ] Make animation for flash
-- [ ] Add flash messages to every login/password cases
+- [x] Add flash messages to every login/password cases
 - [ ] Limit each image's size
 - [ ] Apply work sans font to body texts
 - [ ] Recap when to enable resave and saveUninitialized options
@@ -202,3 +200,5 @@ When you find a user using `User`, don't forget to put async and await; otherwis
 _Day 4_</br>
 
 Unlike the official document, I don't need `cookie-parser` to use `express-flash`.
+
+I have to put ```req.flash``` before ```res.redirect``` or so.
