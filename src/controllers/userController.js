@@ -5,6 +5,7 @@ import User from "../models/User";
 
 export const home = (req, res) => {
   res.render("home", { title: "home" });
+  req.flash("info", "Test message!");
 };
 
 export const getJoin = (req, res) => {
@@ -16,10 +17,8 @@ export const postJoin = async (req, res) => {
     body: { email, password, password2 },
   } = req;
   if (password !== password2) {
-    res.render("join", {
-      title: "join",
-      message: "Failed to confirm password.",
-    });
+    res.render("join", { title: "join" });
+    req.flash("error", "Passwords don't match!");
   } else {
     try {
       const key_one = crypto.randomBytes(256).toString("hex").substr(100, 5);

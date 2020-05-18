@@ -1,3 +1,5 @@
+include mixins/message
+
 doctype html
 html
   head
@@ -8,6 +10,12 @@ html
   body
     include header
     main
+      if messages.error
+        +message({color: 'red', text: 'messages.error'})
+      else if messages.info
+        +message({color: 'gray', text: 'messages.info'})
+      else if messages.success
+        +message({color: 'green', text: 'messages.success'})
       block content
     include footer
     script(src='/dist/assets/main.js')
