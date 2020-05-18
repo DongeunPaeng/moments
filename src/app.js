@@ -14,6 +14,7 @@ import "./passport";
 import path from "path";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
+import contentRouter from "./routers/contentRouter";
 dotenv.config();
 
 const app = express();
@@ -53,3 +54,4 @@ app.use((req, res, next) => {
 
 app.use("/", globalRouter);
 app.use("/users", userRouter);
+app.use("/contents", contentRouter);

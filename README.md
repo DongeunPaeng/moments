@@ -12,17 +12,16 @@ Omissions will be added later.
 
 - [x] server setup with **express**
 - [x] user authentication with **passport**
-- [ ] show messages with **express-flash**
+- [x] show messages with **express-flash**
 - [x] build with **webpack & babel**
 - [x] manage data with **mongoose**
-- [ ] handle file uploads with **multer**
+- [x] handle file uploads with **multer**
 - [ ] save files with **aws-sdk & multer-s3**
 - [x] log HTTP request with **morgan**
 - [x] security with **helmet**
 - [x] store sessions with **express-session & connect-mongo**
 - [x] Authenticate user with **nodemailer**
 - [x] get req.body wiht **body-parser**
-- [ ] npm scripts on windows with **cross-env**
 - [ ] AJAX requests with **axios**
 - [ ] get video file duration with **get-blob-duration**
 - [x] make views with **pug**
@@ -117,18 +116,22 @@ Omissions will be added later.
 - [x] Understand mixin in pug
 - [x] Understand how to make variables in pug
 - [x] Add flash messages to every login/password cases
-- [ ] Limit each image's size
-- [ ] Apply work sans font to body texts
-- [ ] Recap when to enable resave and saveUninitialized options
-- [ ] Separate router and controller
-- [ ] Make Login/Logout
+- [x] Limit each image's size
+- [x] Apply work sans font to body texts
+- [x] Profile Editing
+- [x] Apply CSS
+- [x] Make upload.pug
+- [x] Install 'multer'
 - [ ] File upload/delete
-- [ ] Profile Editing
-- [ ] Apply CSS
+- [ ] Form validator
+- [ ] Social Login
 - [ ] Video Editing
-- [ ] Access control
+- [ ] Access control using middlewares
+
+##### Day 5
+
+- [ ] Work on some client-side JS
 - [ ] Comments
-- [ ] Message
 - [ ] Ask user if he/she is certain to delete his/her account (client-side JS)
 
 ---
@@ -201,4 +204,8 @@ _Day 4_</br>
 
 Unlike the official document, I don't need `cookie-parser` to use `express-flash`.
 
-I have to put ```req.flash``` before ```res.redirect``` or so.
+I have to put `req.flash` before `res.redirect` or so.
+
+I can use `object-fit` class in tailwind css to make images shrink to the size I want.
+
+`multer` is much alike `body-parser`. It processes `multipart/form-data` just like `body-parser` processes `application/x-www-form-urlencoded`.

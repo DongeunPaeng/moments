@@ -1,0 +1,15 @@
+extends main
+block content
+    .container.max-w-xs(class='md:max-w-sm').mb-4.mt-6.mx-auto.font-body
+        form.bg-white.shadow-lg.rounded.px-8.pt-6.pb-8.mb-4(action="/contents/upload" method="post" enctype="multipart/form-data")
+            .mb-4
+                label.block.text-gray-600.text-sm.font-bold.mb-2(for="content") File
+                input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="content" type="file" required=true accept="video/*")
+            .mb-4
+                label.block.text-gray-600.text-sm.font-bold.mb-2(for="title") Title
+                input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="title" type="text" required=true)
+            .mb-4
+                label.block.text-gray-600.text-sm.font-bold.mb-2(for="description") Description
+                textarea.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="description" required=true)
+            .items-center.justify-between(class='md:flex')
+                button.my-2.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Upload

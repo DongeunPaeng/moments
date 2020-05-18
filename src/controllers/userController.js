@@ -4,7 +4,6 @@ import passport from "passport";
 import User from "../models/User";
 
 export const home = (req, res) => {
-  req.flash("success", "Welcome!");
   res.render("home", { title: "home" });
 };
 
@@ -75,13 +74,13 @@ export const getConfirmEmail = async (req, res) => {
     const user = await User.findOne({ verificationKey: req.query.key });
     user.emailVerified = true;
     user.save();
+    req.flash("success", "Nice to meet you!");
     await req.login(user, function (err) {
       if (err) {
         return next(err);
       }
       return res.redirect("/");
     });
-    req.flash("success", "You're verified!"); // check if this appears
   } catch (err) {
     req.flash("error", "Verification failed...");
     res.render("join", { title: "join" });
@@ -124,7 +123,7 @@ export const postConfirmEmail = async (req, res, next) => {
 export const postLogin = passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
-  successFlash: "Hi, nice to meet you!",
+  successFlash: "Welcome!",
   failureFlash: "Please check your email or password",
 });
 

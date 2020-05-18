@@ -1,2 +1,6 @@
 mixin message(message={})
-    .py-3.text-center.container.max-w-xs(class='md:max-w-sm bg-'+message.color+'-100 border border-'+message.color+'-400 text-'+message.color+'-700 rounded relative').mb-4.mt-6.mx-auto.font-bold=message.text
+    .alert-banner.max-w-xs(class='md:max-w-sm').mx-auto.mt-2.-mb-4.font-body
+        input.hidden(type="checkbox" id="banneralert")
+        label.close.cursor-pointer.flex.items-center.justify-between.text-center.content-center.w-full.px-4.py-2.shadow.text-white.font-bold(class="bg-"+message.color+"-200 border border-"+message.color+"-400 text-"+message.color+"-700" title="close" for="banneralert")=message.text
+            svg(class="fill-current text-"+message.color+"-700" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18")
+                path(d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z")

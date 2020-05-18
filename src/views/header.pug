@@ -1,17 +1,17 @@
-nav.flex.items-center.justify-between.flex-wrap.bg-gray-800.px-6.py-4
+nav.flex.items-center.justify-between.flex-wrap.bg-gray-800.px-6.py-4.font-body
     .flex.items-center.flex-shrink-0.text-white.mr-6
         a(href='/').font-semibold.text-lg.tracking-tight #{siteName}
     .block
         .text-sm(class='lg:flex-grow')
             if !loggedUser
-                a.mt-4.text-white.mr-4(href='join', class='lg:inline-block lg:mt-0 hover:text-white')
+                a.mt-4.text-white.mr-4(href='/join', class='lg:inline-block lg:mt-0 hover:text-white')
                     | Join
-                a.mt-4.text-white.mr-4(href='login', class='lg:inline-block lg:mt-0 hover:text-white')
+                a.mt-4.text-white.mr-4(href='/login', class='lg:inline-block lg:mt-0 hover:text-white')
                     | Login
             else
-                a.mt-4.text-white.mr-4(href='#', class='lg:inline-block lg:mt-0 hover:text-white')
+                a.mt-4.text-white.mr-4(href='/contents/upload', class='lg:inline-block lg:mt-0 hover:text-white')
                     | Upload
-                a.mt-4.text-white.mr-4(href='logout', class='lg:inline-block lg:mt-0 hover:text-white')
+                a.mt-4.text-white.mr-4(href='/logout', class='lg:inline-block lg:mt-0 hover:text-white')
                     | Logout
-                a.mt-4.text-white.mr-4.font-bold(href='users/detail' class='lg:inline-block lg:mt-0 hover:text-white')
+                a.mt-4.text-white.mr-4.font-semibold(href='users/detail' class='lg:inline-block lg:mt-0 hover:text-white')
                     | #{loggedUser.email}
