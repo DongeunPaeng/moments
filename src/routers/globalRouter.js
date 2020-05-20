@@ -1,6 +1,5 @@
 import express from "express";
 import {
-  home,
   getJoin,
   postJoin,
   getConfirmEmail,
@@ -9,6 +8,7 @@ import {
   postConfirmEmail,
   postLogin,
 } from "../controllers/userController";
+import { home } from "../controllers/contentController";
 
 const globalRouter = express.Router();
 

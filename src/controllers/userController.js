@@ -3,10 +3,6 @@ import nodemailer from "nodemailer";
 import passport from "passport";
 import User from "../models/User";
 
-export const home = (req, res) => {
-  res.render("home", { title: "home" });
-};
-
 export const getJoin = (req, res) => {
   res.render("join", { title: "join" });
 };

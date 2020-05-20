@@ -31,6 +31,7 @@ app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.resolve(__dirname, "views"));
 app.use("/dist", express.static(path.resolve(__dirname, "../dist")));
+app.use(express.static("src/uploads"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));

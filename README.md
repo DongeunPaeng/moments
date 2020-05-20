@@ -122,7 +122,12 @@ Omissions will be added later.
 - [x] Apply CSS
 - [x] Make upload.pug
 - [x] Install 'multer'
-- [ ] File upload/delete
+- [x] Use multer to save files to uploads directory
+- [x] Save file's path to MongoDB
+- [x] Populate videos to home.pug
+- [ ] Make videos playable
+- [ ] Make videos listed horizontally in large devices
+- [ ] Enable deleting videos
 - [ ] Form validator
 - [ ] Social Login
 - [ ] Video Editing
@@ -209,3 +214,7 @@ I have to put `req.flash` before `res.redirect` or so.
 I can use `object-fit` class in tailwind css to make images shrink to the size I want.
 
 `multer` is much alike `body-parser`. It processes `multipart/form-data` just like `body-parser` processes `application/x-www-form-urlencoded`.
+
+Most 404 errors have something to do with files' path. I should look into express.static and related file paths in such case.
+
+Typically, MongoDB can understand 'id' property. However, when sorting, the property should have underscore like '\_id'

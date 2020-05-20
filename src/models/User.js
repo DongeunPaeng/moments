@@ -10,6 +10,7 @@ const userSchema = new Schema({
   comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   emailVerified: { type: Boolean, required: true, default: false },
   verificationKey: { type: String, required: true },
+  videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
