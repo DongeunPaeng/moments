@@ -145,76 +145,76 @@ Omissions will be added later.
 
 _Day 1_</br>
 
-The official webpack documentation says **not to** use 'extract-text-webpack-plugin' for webpack v4 or above. I should use 'mini-css-extract-plugin' instead.
+- The official webpack documentation says **not to** use 'extract-text-webpack-plugin' for webpack v4 or above. I should use 'mini-css-extract-plugin' instead.
 
-It's recommended to use 'i' modifier when using Regexp to refer to a file name or extensions. (e.g. CSS or css)
+- It's recommended to use 'i' modifier when using Regexp to refer to a file name or extensions. (e.g. CSS or css)
 
-I need babel in order to use ES6 scripts. (e.g. import, etc.)
+- I need babel in order to use ES6 scripts. (e.g. import, etc.)
 
-Many errors are thrown when I try to convert server-side .js file through webpack. It is for client-side .js files.
+- Many errors are thrown when I try to convert server-side .js file through webpack. It is for client-side .js files.
 
-app.use means app.\* including app.get, app.delete, app.post, etc., and will take a bit more time to process.
+- app.use means app.\* including app.get, app.delete, app.post, etc., and will take a bit more time to process.
 
-Order of express middlewares are **IMPORTANT**. Helmet comes first. Others come later.
+- Order of express middlewares are **IMPORTANT**. Helmet comes first. Others come later.
 
 _Day 2_</br>
 
-Without express.static, I would have to make thousands of routers for every image files, etc.
+- Without express.static, I would have to make thousands of routers for every image files, etc.
 
-Installation of babel consists of installing two npm packages - @bable/core and @babel/cli.
+- Installation of babel consists of installing two npm packages - @bable/core and @babel/cli.
 
-'babel' doesn't do anything out-of-the-box! It's the babel presets and plugins that do the work.
+- 'babel' doesn't do anything out-of-the-box! It's the babel presets and plugins that do the work.
 
-@babel/preset-env is just one preset that includes many useful and generally accepted plugins, named 'env'.
+- @babel/preset-env is just one preset that includes many useful and generally accepted plugins, named 'env'.
 
-.babelrc is not recommended. Use babel.config.json especially when you're using a monorepo.
+- .babelrc is not recommended. Use babel.config.json especially when you're using a monorepo.
 
-babel-loader is made by webpack, not by babel. It's used for webpack to load babel to process .js files.
+- babel-loader is made by webpack, not by babel. It's used for webpack to load babel to process .js files.
 
-Without babel-node, you can't execute app.js file if it is written in ES6.
+- Without babel-node, you can't execute app.js file if it is written in ES6.
 
 _Day 3_</br>
 
-To let body-parser to parse POSTed data, you have to put in 'name' attributes in your form. body-parser can't read id attributes.
+- To let body-parser to parse POSTed data, you have to put in 'name' attributes in your form. body-parser can't read id attributes.
 
-We need body-parser's urlencoded middleware to get contents from the client. Otherwise we will get empty object in `req.body`.
+- We need body-parser's urlencoded middleware to get contents from the client. Otherwise we will get empty object in `req.body`.
 
-When you submit form data with a POST request, that form data can be encoded in many ways. The default type for HTML forms is application/x-www-urlencoded. In this case, we need to use body-parser's urlencoded middleware to parse this data.
+- When you submit form data with a POST request, that form data can be encoded in many ways. The default type for HTML forms is application/x-www-urlencoded. In this case, we need to use body-parser's urlencoded middleware to parse this data.
 
-Destructuring assignment makes life easier by replacing, for example, `req.body.email` to just 'email' within a scope.
+- Destructuring assignment makes life easier by replacing, for example, `req.body.email` to just 'email' within a scope.
 
-It seems like I have to use square brackets to join(?) another Schema to the Schema I'm building. For example, if I want to connect a User with his/her Comments, I have to write like `comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]`
+- It seems like I have to use square brackets to join(?) another Schema to the Schema I'm building. For example, if I want to connect a User with his/her Comments, I have to write like `comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]`
 
-Passport serializes and deserializes user instances to and from the session to enable persistent login sessions. This will make possible to use req.user anywhere in the application.
+- Passport serializes and deserializes user instances to and from the session to enable persistent login sessions. This will make possible to use req.user anywhere in the application.
 
-To use `passport.serializeUser` and `passport.deserializeUser` (session) I have to use express-session first.
+- To use `passport.serializeUser` and `passport.deserializeUser` (session) I have to use express-session first.
 
-Actually, it's `passport.deserializeUser` method that generates and pass the `req.user`.
+- Actually, it's `passport.deserializeUser` method that generates and pass the `req.user`.
 
-If I set express-session option resave to true, the session will be saved every time regardless if there was a change in the session.
+- If I set express-session option resave to true, the session will be saved every time regardless if there was a change in the session.
 
-If I set express-session option `saveUninitialized` to false, the session will not save any session which is not initialized(empty).
+- If I set express-session option `saveUninitialized` to false, the session will not save any session which is not initialized(empty).
 
-If I don't need a User document returned after updating it, I can use `updateOne` method instead of `findOneAndUpdate`.
+- If I don't need a User document returned after updating it, I can use `updateOne` method instead of `findOneAndUpdate`.
 
-When you're using mongoose, you don't need to use mongoDB's update operator(e.g. `updateOne`); rather, you can update the object like `user.emailVerified = true.`
+- When you're using mongoose, you don't need to use mongoDB's update operator(e.g. `updateOne`); rather, you can update the object like `user.emailVerified = true.`
 
-I can make a new user log in right after he/she registers by adding `req.login(user)` inside the `postJoin` function.
+- I can make a new user log in right after he/she registers by adding `req.login(user)` inside the `postJoin` function.
 
-I couldn't make async function and put `passport.authenticate` inside the function. So I made another function and gave it the 'next' parameter to move onto `passport.authenticate(postLogin)`
+- I couldn't make async function and put `passport.authenticate` inside the function. So I made another function and gave it the 'next' parameter to move onto `passport.authenticate(postLogin)`
 
-When you find a user using `User`, don't forget to put async and await; otherwise you'll get a very long Query object instead.
+- When you find a user using `User`, don't forget to put async and await; otherwise you'll get a very long Query object instead.
 
 _Day 4_</br>
 
-Unlike the official document, I don't need `cookie-parser` to use `express-flash`.
+- Unlike the official document, I don't need `cookie-parser` to use `express-flash`.
 
-I have to put `req.flash` before `res.redirect` or so.
+- I have to put `req.flash` before `res.redirect` or so.
 
-I can use `object-fit` class in tailwind css to make images shrink to the size I want.
+- I can use `object-fit` class in tailwind css to make images shrink to the size I want.
 
-`multer` is much alike `body-parser`. It processes `multipart/form-data` just like `body-parser` processes `application/x-www-form-urlencoded`.
+- `multer` is much alike `body-parser`. It processes `multipart/form-data` just like `body-parser` processes `application/x-www-form-urlencoded`.
 
-Most 404 errors have something to do with files' path. I should look into express.static and related file paths in such case.
+- Most 404 errors have something to do with files' path. I should look into express.static and related file paths in such case.
 
-Typically, MongoDB can understand 'id' property. However, when sorting, the property should have underscore like '\_id'
+- Typically, MongoDB can understand 'id' property. However, when sorting, the property should have underscore like '\_id'
