@@ -126,6 +126,7 @@ Omissions will be added later.
 - [x] Save file's path to MongoDB
 - [x] Populate videos to home.pug
 - [x] Make videos playable
+- [ ] Remove uploads folder from github repository
 - [ ] Make videos listed horizontally in large devices
 - [ ] Enable deleting videos
 - [ ] Form validator
