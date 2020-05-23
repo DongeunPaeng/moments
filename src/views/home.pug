@@ -2,11 +2,12 @@ extends main
 include mixins/videoSection
 
 block content
-    each item in videos
-        +videoSection({
-            id: item.id,
-            title: item.title,
-            views: item.views,
-            description: item.description,
-            fileUrl: item.fileUrl
-        })
+    .grid.grid-cols-1(class="md:grid-cols-3 lg:grid-cols-4")
+        each item in videos
+            +videoSection({
+                id: item.id,
+                title: item.title,
+                views: item.views,
+                description: item.description,
+                fileUrl: item.fileUrl
+            })

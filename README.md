@@ -125,7 +125,7 @@ Omissions will be added later.
 - [x] Use multer to save files to uploads directory
 - [x] Save file's path to MongoDB
 - [x] Populate videos to home.pug
-- [ ] Make videos playable
+- [x] Make videos playable
 - [ ] Make videos listed horizontally in large devices
 - [ ] Enable deleting videos
 - [ ] Form validator
