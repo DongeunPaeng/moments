@@ -2,7 +2,7 @@ extends main
 include mixins/videoSection
 
 block content
-    .container.mx-auto.flex.flex-wrap.justify-center.font-body.mt-8
+    .container.mx-auto.flex.flex-wrap.justify-center.font-body
         each item in videos
             +videoSection({
                 id: item.id,

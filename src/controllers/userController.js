@@ -2,6 +2,7 @@ import crypto from "crypto";
 import nodemailer from "nodemailer";
 import passport from "passport";
 import User from "../models/User";
+import Video from "../models/Video";
 
 export const getJoin = (req, res) => {
   res.render("join", { title: "join" });
@@ -66,8 +67,9 @@ export const postJoin = async (req, res) => {
 };
 
 export const getConfirmEmail = async (req, res) => {
+  const key = req.originalUrl.split("=")[1];
   try {
-    const user = await User.findOne({ verificationKey: req.query.key });
+    const user = await User.findOne({ verificationKey: key });
     user.emailVerified = true;
     user.save();
     req.flash("success", "Nice to meet you!");
@@ -149,7 +151,6 @@ export const postChangePassword = async (req, res) => {
   const {
     body: { oldPassword, newPassword, newPassword2 },
   } = req;
-  console.log(oldPassword, newPassword, newPassword2);
   try {
     if (newPassword !== newPassword2) {
       res.redirect("/users/change-password");
@@ -166,4 +167,11 @@ export const postChangePassword = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getMyVideos = async (req, res) => {
+  const videos = await Video.find({ creator: req.user.id })
+    .sort({ _id: -1 })
+    .populate("creator");
+  res.render("myvideos", { videos });
 };

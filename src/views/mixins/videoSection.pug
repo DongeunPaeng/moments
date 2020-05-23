@@ -1,12 +1,14 @@
 mixin videoSection(video={})
-    //- .flex.items-center.justify-center.flex-wrap.pb-2.pt-5.px-6.font-body
-        //- .max-w-sm.rounded.overflow-hidden.shadow-lg.m-2
-            //- video.w-full.h-64.object-cover.p-1(src=video.fileUrl controls)
-            //- .px-6.py-4
-                //- .text-xl.mb-2=video.title
-                //- .text-gray-600.text-base=video.description
-            //- .px-6.py-4
-                //- span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mr-2.mb-1 #my
-                //- span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mr-2.mb-1 #best
-                //- span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mb-1 #moments
-    .max-w-sm.rounded.overflow-hidden.shadow-lg.m-2=video.title
+    .max-w-sm.rounded.overflow-hidden.shadow-lg.m-2
+        video.w-full.h-64.object-cover.p-1(src=`/${video.fileUrl}` controls)
+        .px-6.py-4
+            .text-gray-600.text-xl.mb-2=video.title
+            .text-gray-600.text-sm.mb-2 created by #{video.creator}
+            .text-gray-600=video.description
+        .px-6.py-4
+            span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.mb-1 #my
+            span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.mb-1 #best
+            span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.mb-1 #moments
+            if loggedUser && video.creator === loggedUser.email
+                a(href=`/contents/delete-video/${video.id}`)
+                    button.bg-red-600.text-white.py-1.px-4.mt-4.rounded.block.w-sm(class='hover:bg-red-800') Delete

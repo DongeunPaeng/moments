@@ -126,16 +126,18 @@ Omissions will be added later.
 - [x] Save file's path to MongoDB
 - [x] Populate videos to home.pug
 - [x] Make videos playable
-- [ ] Remove uploads folder from github repository
-- [ ] Make videos listed horizontally in large devices
-- [ ] Enable deleting videos
-- [ ] Form validator
-- [ ] Social Login
-- [ ] Video Editing
-- [ ] Access control using middlewares
+- [x] Remove uploads folder from github repository
+- [x] Make videos listed horizontally in large devices
+- [x] Show each video's creator in each video card
+- [x] Enable deleting videos
 
 ##### Day 5
 
+- [ ] Apply a form validator to join and login forms
+- [ ] Social Login
+- [ ] Video Editing
+- [ ] Count views
+- [ ] Access control using middlewares
 - [ ] Work on some client-side JS
 - [ ] Comments
 - [ ] Ask user if he/she is certain to delete his/her account (client-side JS)
@@ -218,4 +220,10 @@ _Day 4_</br>
 
 - Most 404 errors have something to do with files' path. I should look into express.static and related file paths in such case.
 
-- Typically, MongoDB can understand 'id' property. However, when sorting, the property should have underscore like '\_id'
+- Typically, MongoDB can understand 'id' property. However, when sorting, the property should have underscore like '\_id'.
+
+- Mongoose has ```popolation``` that works similarly as ```SQL join```.
+
+- Plus signs in URL can't be read via ```req.query``` and cause e-mail verification error. I should use ```req.originalUrl.split``` to get the full URL.
+
+- I can use ```findOneAndUpdate``` to delete a user's comments or videos easily.
