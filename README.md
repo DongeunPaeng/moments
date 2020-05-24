@@ -23,7 +23,7 @@ Omissions will be added later.
 - [x] Authenticate user with **nodemailer**
 - [x] get req.body wiht **body-parser**
 - [ ] AJAX requests with **axios**
-- [ ] get video file duration with **get-blob-duration**
+- [x] Validate forms with **password-validator** and **email-validator**
 - [x] make views with **pug**
 - [x] make beautiful with **tailwind css**
 
@@ -133,15 +133,35 @@ Omissions will be added later.
 
 ##### Day 5
 
-- [ ] Apply a form validator to join and login forms
-- [ ] Install 'password-validator'
-- [ ] Social Login
-- [ ] Video Editing
-- [ ] Count views
-- [ ] Access control using middlewares
-- [ ] Work on some client-side JS
-- [ ] Comments
-- [ ] Ask user if he/she is certain to delete his/her account (client-side JS)
+- [x] Install 'password-validator'
+- [x] Install 'email-validator'
+- [x] Add 'password-validator' to join.pug
+- [x] Add 'email-validator' to join.pug and login.pug
+- [x] Disable required input forms to block social login
+- [x] Let Kakao users skip email verification process
+- [x] Add Kakao login to login.pug and join.pug
+- [x] Show flash after Kakao Login
+- [x] Hide change password for Kakao users
+- [x] Validate password at changePassword.pug
+- [x] Show flash when a user tries to login with wrong email address
+
+##### Day 6
+
+- Work on some client-side JS
+  - [x] Count views
+    - [x] Make video.js
+    - [x] Install 'axios'
+  - [ ] Video Editing
+    - [ ] Edit title icon beside the title
+    - [ ] Edit description
+    - [ ] Edit hashtags
+  - [ ] Make client dynamically show if all forms are valid
+  - [ ] Post and delete comments
+  - [ ] Ask user if he/she is certain to delete his/her account
+- [ ] Delete videos and comments when deleting one's account
+- [ ] Enable hashtag
+- [ ] Store hashtags in mongoDB
+- [ ] Search
 
 ---
 
@@ -229,4 +249,12 @@ _Day 4_</br>
 
 - I can use `findOneAndUpdate` to delete a user's comments or videos easily.
 
-- Dong't forget to add node_modules to .gitignore.
+- Don't forget to add node_modules to .gitignore.
+
+- I have to put a tag inside the button tag to make a link related to the button. Otherwise I can't apply designs to the button because a tag can't be applied with designs.
+
+- When adding custom color to tailwind.config.js, I have to put my colors using `theme.extend.colors` to maintain the default theme.
+
+- It is recommended to use `res.render` most times rather than `res.redirect`.
+
+- If I want to make `if` statement to check if `req.user` exists or not, I have to declare the user first.

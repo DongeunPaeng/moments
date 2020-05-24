@@ -3,18 +3,20 @@ block content
     .container.max-w-xs(class='md:max-w-sm').mb-4.mt-6.mx-auto.font-body
         form.bg-white.shadow-lg.rounded.px-8.pt-6.pb-8.mb-4(action="/join" method="post")
             .mb-4
-                label.block.text-gray-600.text-sm.font-bold.mb-2(for="email") E-mail
+                label.block.text-gray-600.text-sm.mb-2(for="email") E-mail
                 input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="email" type="text" required=true)
                 p.text-gray-600.text-xs We'll #[strong send you an e-mail] to verify your account! 😁
             .mb-4
-                label.block.text-gray-600.text-sm.font-bold.mb-2(for="password") Password
+                label.block.text-gray-600.text-sm.mb-2(for="password") Password
                 input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="password" type="password" required=true)
             .mb-4
-                label.block.text-gray-600.text-sm.font-bold.mb-2(for="password2") Confirm Password
+                label.block.text-gray-600.text-sm.mb-2(for="password2") Confirm Password
                 input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="password2" type="password" required=true)
-                p.text-gray-600.text-xs Let's make it strong and long enough! 🔒
+                p.text-gray-600.text-xs Password must be #[strong at least 8 characters] long 🔒
+                p.text-gray-600.text-xs Password must have #[strong uppercase, lowercase, special characters and numbers] 👁‍🗨
             .flex.items-center.justify-between
-                button.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Join
-                a.inline-block.align-baseline.font-bold.text-sm.text-gray-600(class='hover:text-gray-800' href="/reset") Forgot password?
+                button.bg-gray-600.text-white.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Join
+                a.inline-block.align-baseline.text-sm.text-gray-600(class='hover:text-gray-800' href="/reset") Forgot password?
+        include socialLogin
     .container.max-w-xs(class='md:max-w-sm').mb-4.mt-6.mx-auto.font-body
-        p.break-words Don't worry, your password will be encrypted such as... #[em 96efe84421b3ea9306ea0e32f263ddff239b250a9f2c8ef947da14644e5af0bb4d8d25f5cf8725350e663c8bc5f4b2f0fd033b52a201e94af759386d08a0bf2ec909bb8ed8fd7a943bfe2cce0a9ad1ed63ea4e5747eff9a064fde4e3dfcba8c71d21272f71457f93117b002f16c2241b5907e67196e9bb4ec22f676582214ce3177d451699088957a1aa9d9371cfcac3ed0a423f2355490570b3862c560a9c4226bfee08cfd0c5552365d90f3f1187a719244c8bf15041186a16b16e51f7261464c3929dd2165582c9c49edc9c73c86407b8399cbd253bac2eff98b1d09d75300bbcf9b124a06bd675b16189f0f3288b882d7f3d71596c40ce67726b953684782846bc73...]
+        p.break-words.text-sm.text-gray-600 #[strong Don't worry, your password will be encrypted such as...] #[em 96efe84421b3ea9306ea0b8ed8fd7a943bfe2cce0a9ad1ed63ea4e5747eff9a096e9b953684782846bc73...]

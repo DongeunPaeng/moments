@@ -1,7 +1,20 @@
+import KakaoStrategy from "passport-kakao";
 import passport from "passport";
 import User from "./models/User";
+import { kakaoLoginCallback } from "./controllers/userController";
 
 passport.use(User.createStrategy());
+
+passport.use(
+  new KakaoStrategy(
+    {
+      clientID: process.env.KAKAO_ID,
+      clientSecret: process.env.KAKAO_SECRET,
+      callbackURL: "http://localhost:4000/auth/kakao/callback",
+    },
+    kakaoLoginCallback
+  )
+);
 
 passport.serializeUser((user, done) => {
   done(null, user.id);

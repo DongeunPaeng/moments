@@ -4,7 +4,11 @@ module.exports = {
     fontFamily: {
       body: ["Work Sans", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        kakao: "#ffeb00",
+      },
+    },
   },
   variants: {},
   plugins: [],

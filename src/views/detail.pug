@@ -6,8 +6,9 @@ block content
         .max-w-sm.rounded.overflow-hidden.shadow-lg.m-2
             .px-6.py-4
                 .text-xl.mb-2=loggedUser.email
-                a(href='/users/change-password/').block
-                    button.bg-gray-600.text-white.py-1.px-4.mt-4.rounded.w-full(class='hover:bg-gray-800', type="submit") Change Password
+                if loggedUser.emailVerified === true
+                    a(href='/users/change-password/').block
+                        button.bg-gray-600.text-white.py-1.px-4.mt-4.rounded.w-full(class='hover:bg-gray-800', type="submit") Change Password
                 a(href='/users/my-videos/').block
                     button.bg-gray-600.text-white.py-1.px-4.mt-4.rounded.w-full(class='hover:bg-gray-800', type="submit") My Videos
                 a(href='/users/delete/').block

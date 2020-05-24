@@ -9,7 +9,7 @@ const userSchema = new Schema({
   kakaoId: Number,
   comment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   emailVerified: { type: Boolean, required: true, default: false },
-  verificationKey: { type: String, required: true },
+  verificationKey: { type: String },
   videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
 });
 

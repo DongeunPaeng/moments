@@ -41,17 +41,45 @@ export const postUpload = async (req, res) => {
 export const deleteVideo = async (req, res) => {
   const {
     params: { id },
+    user,
   } = req;
   try {
-    const video = await Video.findByIdAndDelete(id);
-    await User.findOneAndUpdate(
-      { videos: video.id },
-      { $pull: { videos: video.id } }
-    );
-    req.flash("success", "Video deleted successfully");
-    res.redirect("/users/my-videos");
+    const video = await Video.findById(id).populate("creator");
+    if (!user || user.id !== video.creator.id) {
+      req.flash("error", "Access denied");
+      res.redirect("/");
+    } else {
+      await Video.findByIdAndRemove(id);
+      await User.findOneAndUpdate(
+        { videos: video.id },
+        { $pull: { videos: video.id } }
+      );
+      req.flash("success", "Video deleted successfully");
+      res.redirect("/users/my-videos");
+    }
+  } catch (err) {
+    req.flash("error", "Access denied");
+    res.redirect("/");
+  }
+};
+
+export const getEditVideo = async (req, res) => {
+  res.send("edit video");
+};
+
+export const postView = async (req, res) => {
+  const {
+    params: { url },
+  } = req;
+  try {
+    const video = await Video.findOne({ fileUrl: `videos/${url}` });
+    video.views++;
+    video.save();
+    res.status(200);
   } catch (err) {
     console.log(err);
-    req.flash("error", "Failed to delete your video...");
+    res.status(400);
+  } finally {
+    res.end();
   }
 };
