@@ -134,6 +134,7 @@ Omissions will be added later.
 ##### Day 5
 
 - [ ] Apply a form validator to join and login forms
+- [ ] Install 'password-validator'
 - [ ] Social Login
 - [ ] Video Editing
 - [ ] Count views
@@ -222,8 +223,10 @@ _Day 4_</br>
 
 - Typically, MongoDB can understand 'id' property. However, when sorting, the property should have underscore like '\_id'.
 
-- Mongoose has ```popolation``` that works similarly as ```SQL join```.
+- Mongoose has `popolation` that works similarly as `SQL join`.
 
-- Plus signs in URL can't be read via ```req.query``` and cause e-mail verification error. I should use ```req.originalUrl.split``` to get the full URL.
+- Plus signs in URL can't be read via `req.query` and cause e-mail verification error. I should use `req.originalUrl.split` to get the full URL.
 
-- I can use ```findOneAndUpdate``` to delete a user's comments or videos easily.
+- I can use `findOneAndUpdate` to delete a user's comments or videos easily.
+
+- Dong't forget to add node_modules to .gitignore.
