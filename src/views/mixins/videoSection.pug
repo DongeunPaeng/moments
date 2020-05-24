@@ -2,7 +2,9 @@ mixin videoSection(video={})
     .max-w-sm.rounded.overflow-hidden.shadow-lg.m-2
         video#videoContent.w-full.h-64.object-cover.p-1(src=`/${video.fileUrl}` controls)
         .px-6.py-4
-            .text-gray-600.text-xl.mb-2#videoTitle=video.title
+            .titleBox.flex.justify-start.items-center
+                .text-gray-600.text-xl.mb-2.mr-2#videoTitle=video.title
+                button#editVideoTitle.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
             .text-gray-600.text-sm.mb-2 created by #{video.creator}
             .text-gray-600.text-sm.mb-2 #{video.views} views
             .text-gray-600=video.description

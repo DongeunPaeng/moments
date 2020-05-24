@@ -15,6 +15,21 @@ const addView = () => {
 
 const handleEditVideoTitle = () => {
   videoTitle.contentEditable = true;
+  videoTitle.focus();
+  videoTitle.classList.add("overflow-hidden");
+  const confirmButton = document.createElement("button");
+  confirmButton.setAttribute("id", "newVideoTitle");
+  confirmButton.setAttribute("class", "text-sm font-bold text-blue-500 mb-2");
+  confirmButton.innerHTML = "OK";
+  editVideoTitleButton.parentNode.replaceChild(
+    confirmButton,
+    editVideoTitleButton
+  );
+};
+
+const handleNewVideoTitle = () => {
+  newTitle = videoTitle.value;
+  console.log(newTitle);
 };
 
 const editVideoTitle = () => {

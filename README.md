@@ -22,7 +22,7 @@ Omissions will be added later.
 - [x] store sessions with **express-session & connect-mongo**
 - [x] Authenticate user with **nodemailer**
 - [x] get req.body wiht **body-parser**
-- [ ] AJAX requests with **axios**
+- [x] AJAX requests with **axios**
 - [x] Validate forms with **password-validator** and **email-validator**
 - [x] make views with **pug**
 - [x] make beautiful with **tailwind css**
@@ -152,7 +152,9 @@ Omissions will be added later.
     - [x] Make video.js
     - [x] Install 'axios'
   - [ ] Video Editing
-    - [ ] Edit title icon beside the title
+    - [x] Edit title icon beside the title
+    - [x] Limit overflow in the editing text area
+    - [ ] Diable line break in the editing text area
     - [ ] Edit description
     - [ ] Edit hashtags
   - [ ] Make client dynamically show if all forms are valid
@@ -246,6 +248,8 @@ _Day 4_</br>
 - Mongoose has `popolation` that works similarly as `SQL join`.
 
 - Plus signs in URL can't be read via `req.query` and cause e-mail verification error. I should use `req.originalUrl.split` to get the full URL.
+
+_Day 5_</br>
 
 - I can use `findOneAndUpdate` to delete a user's comments or videos easily.
 
