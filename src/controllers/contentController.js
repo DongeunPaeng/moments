@@ -17,12 +17,14 @@ export const getUpload = (req, res) => {
 export const postUpload = async (req, res) => {
   const {
     file: { filename },
-    body: { title, description },
+    body: { title, description, tags },
   } = req;
+  console.log(req.body);
   try {
     const newVideo = await Video.create({
       title,
       description,
+      tags,
       fileUrl: "videos/".concat(filename),
       creator: req.user.id,
     });
@@ -74,6 +76,24 @@ export const postView = async (req, res) => {
   try {
     const video = await Video.findOne({ fileUrl: `videos/${url}` });
     video.views++;
+    video.save();
+    res.status(200);
+  } catch (err) {
+    console.log(err);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postUpdate = async (req, res) => {
+  const {
+    params: { url },
+    body: { newContent, type },
+  } = req;
+  try {
+    const video = await Video.findOne({ fileUrl: `videos/${url}` });
+    video[type] = newContent;
     video.save();
     res.status(200);
   } catch (err) {

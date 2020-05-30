@@ -4,10 +4,10 @@ block content
         form.bg-white.shadow-lg.rounded.px-8.pt-6.pb-8.mb-4(action="/login" method="post")
             .mb-4
                 label.block.text-gray-600.text-sm.mb-2(for="email") E-mail
-                input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="email" type="text" required=true)
+                input.shadow.appearance-none.outline-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="email" type="text" required=true)
             .mb-4
                 label.block.text-gray-600.text-sm.mb-2(for="password") Password
-                input.shadow.appearance-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="password" type="password" required=true)
+                input.shadow.appearance-none.outline-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(name="password" type="password" required=true)
             .items-center.justify-between(class='md:flex')
                 button.my-2.bg-gray-600.text-white.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Log in
                 a.my-3.block.align-baseline.text-sm.text-gray-600(class='hover:text-gray-800' href="/join") Not a member?

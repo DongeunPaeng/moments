@@ -147,16 +147,20 @@ Omissions will be added later.
 
 ##### Day 6
 
+- [x] Fix CSS in header, upload, etc.
+- [x] Use 'Metro UI' to make tags input
 - Work on some client-side JS
   - [x] Count views
     - [x] Make video.js
     - [x] Install 'axios'
-  - [ ] Video Editing
+  - [x] Video Editing
     - [x] Edit title icon beside the title
     - [x] Limit overflow in the editing text area
-    - [ ] Diable line break in the editing text area
-    - [ ] Edit description
-    - [ ] Edit hashtags
+    - [x] Diable line break in the editing text area
+    - [x] Edit description
+    - [x] Allow only creators edit their videos
+    - [x] Edit hashtags
+    - [ ] Send tags to the server with other requests such as files, title, and description
   - [ ] Make client dynamically show if all forms are valid
   - [ ] Post and delete comments
   - [ ] Ask user if he/she is certain to delete his/her account
@@ -262,3 +266,13 @@ _Day 5_</br>
 - It is recommended to use `res.render` most times rather than `res.redirect`.
 
 - If I want to make `if` statement to check if `req.user` exists or not, I have to declare the user first.
+
+_Day 6_</br>
+
+- Don't forget to add class `w-full` to prevent words overflow to outside its container.
+
+- I can easily send query or `$set` via mongoose with dynamic properties by 'computed member access operator(a.k.a. square brackets).
+
+- I can't use `getElementById()` inside other elements because ID is meant to be unique, thus it doesn't have to be looked for inside other elements.
+
+- I can manipulate multiple DOM elements in a single page using for loops and querySelector, getElementsByClassName.

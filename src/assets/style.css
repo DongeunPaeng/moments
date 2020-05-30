@@ -195,3 +195,26 @@
     opacity: 0;
   }
 }
+
+.simple-tags > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.simple-tags ul li {
+  margin: 0.5em 0.2em;
+  padding: 0.5em;
+  color: #fff;
+  background-color: #718096;
+  border-radius: 5px;
+}
+.simple-tags ul li a {
+  margin: 0.5em 0.2em;
+  text-decoration: none;
+  color: inherit;
+}
+.simple-tags input {
+  outline: none;
+}
