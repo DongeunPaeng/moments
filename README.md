@@ -149,7 +149,7 @@ Omissions will be added later.
 
 - [x] Fix CSS in header, upload, etc.
 - [x] Use 'Metro UI' to make tags input
-- Work on some client-side JS
+- [ ] Work on some client-side JS
   - [x] Count views
     - [x] Make video.js
     - [x] Install 'axios'
@@ -159,14 +159,19 @@ Omissions will be added later.
     - [x] Diable line break in the editing text area
     - [x] Edit description
     - [x] Allow only creators edit their videos
-    - [x] Edit hashtags
-    - [ ] Send tags to the server with other requests such as files, title, and description
+    - [x] Create modal for editing tags
+    - [x] Edit tags
+    - [x] Send tags to the server
+    - [x] Show tags in the video section
+    - [x] Prevent users input same tags repeatedly
+    - [x] Break words for tags
+  - [ ] Ask user if he/she is certain to delete his/her account
   - [ ] Make client dynamically show if all forms are valid
   - [ ] Post and delete comments
-  - [ ] Ask user if he/she is certain to delete his/her account
+- [ ] Modify 'Delete' button's position to stick to the bottom
 - [ ] Delete videos and comments when deleting one's account
 - [ ] Enable hashtag
-- [ ] Store hashtags in mongoDB
+- [ ] Store hashtags in mongo
 - [ ] Search
 
 ---
@@ -276,3 +281,13 @@ _Day 6_</br>
 - I can't use `getElementById()` inside other elements because ID is meant to be unique, thus it doesn't have to be looked for inside other elements.
 
 - I can manipulate multiple DOM elements in a single page using for loops and querySelector, getElementsByClassName.
+
+- I can pass tags in `<li>` elements to the server by giving them `<input>` elements with names `tags[]` inside.
+
+- I can make users redirected to the last page using `res.redirect('back)`
+
+- I must make `overflow-y: visible` to enable scroll when a modal is open
+
+- I must not use ```enctype="multipart/form-data"``` when a form doesn't include file uploads. I don't know why for now.
+
+- When using ```axios```, the server-side ```res.redirect``` doesn't work. I have to handle response within axios function.

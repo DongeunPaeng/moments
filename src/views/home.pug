@@ -6,6 +6,7 @@ block content
         each item in videos
             +videoSection({
                 id: item.id,
+                tags: item.tags,
                 creator: item.creator.email,
                 title: item.title,
                 views: item.views,

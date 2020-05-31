@@ -202,13 +202,21 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
+  overflow-wrap: break-word;
 }
 .simple-tags ul li {
-  margin: 0.5em 0.2em;
-  padding: 0.5em;
-  color: #fff;
-  background-color: #718096;
-  border-radius: 5px;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  color: #718096;
+  background-color: #edf2f7;
+  border-radius: 9999px;
+  font-weight: 600;
+  word-break: break-all;
 }
 .simple-tags ul li a {
   margin: 0.5em 0.2em;
@@ -217,4 +225,17 @@
 }
 .simple-tags input {
   outline: none;
+}
+
+#abc {
+  display: none;
+}
+
+.modal {
+  transition: opacity 0.25s ease;
+}
+
+body.modal-active {
+  overflow-x: hidden;
+  overflow-y: visible;
 }

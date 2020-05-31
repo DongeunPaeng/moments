@@ -30,12 +30,11 @@ const Tags = (element) => {
     DOMList.innerHTML = "";
     arrayOfList.forEach((currentValue, index) => {
       let li = document.createElement("li");
-      li.innerHTML = `${currentValue} <a><button>&times;</button></a>`;
+      li.innerHTML = `${currentValue} <input type='hidden' name='tags[]' value=${currentValue}><a><button>&times;</button></a>`;
       li.querySelector("a").addEventListener("click", (e) => {
         if (e.offsetX === 0 && e.offsetY === 0) {
           return false;
         } else {
-          let text = e.target.parentNode.parentNode.innerHTML.split(" ")[0];
           onDelete(index);
           let liDelete = e.target.parentNode.parentNode;
           liDelete.remove();
@@ -53,6 +52,8 @@ const Tags = (element) => {
         e.preventDefault();
         if (text.search(" ") !== -1) {
           alert("An empty space not allowed. Please use _ instead.");
+        } else if (arrayOfList.indexOf(text) !== -1) {
+          alert("Can't use duplicate tags");
         } else {
           if (text.replace(",", "") != "") {
             arrayOfList.push(text.replace(",", ""));
@@ -89,3 +90,5 @@ const Tags = (element) => {
     new Tags(currentValue);
   });
 })();
+
+// last part needs refactoring

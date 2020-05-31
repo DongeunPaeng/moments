@@ -19,7 +19,6 @@ export const postUpload = async (req, res) => {
     file: { filename },
     body: { title, description, tags },
   } = req;
-  console.log(req.body);
   try {
     const newVideo = await Video.create({
       title,
@@ -57,7 +56,7 @@ export const deleteVideo = async (req, res) => {
         { $pull: { videos: video.id } }
       );
       req.flash("success", "Video deleted successfully");
-      res.redirect("/users/my-videos");
+      res.redirect("back");
     }
   } catch (err) {
     req.flash("error", "Access denied");
@@ -101,5 +100,24 @@ export const postUpdate = async (req, res) => {
     res.status(400);
   } finally {
     res.end();
+  }
+};
+
+export const postTagsUpdate = async (req, res) => {
+  const {
+    params: { id },
+    body: { tags },
+  } = req;
+  try {
+    const video = await Video.findByIdAndUpdate(id, {
+      tags,
+    });
+    video.save();
+    req.flash("success", "Updated!");
+    res.redirect("back");
+  } catch (err) {
+    console.log(err);
+    req.flash("error", "Can't update...");
+    res.redirect("back");
   }
 };

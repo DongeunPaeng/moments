@@ -198,9 +198,10 @@ export const deleteUser = async (req, res) => {
     await User.findByIdAndRemove(req.user.id);
     await Video.findOneAndRemove({ creator: req.user.id });
     req.flash("info", "Hope to see you again!");
-    res.redirect("/");
+    res.status(200);
   } catch (err) {
     console.log(err);
+    res.status(400);
   }
 };
 

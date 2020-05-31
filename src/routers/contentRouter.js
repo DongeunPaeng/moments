@@ -6,6 +6,7 @@ import {
   getEditVideo,
   postView,
   postUpdate,
+  postTagsUpdate,
 } from "../controllers/contentController";
 import multer from "multer";
 
@@ -18,5 +19,6 @@ contentRouter.get("/delete-video/:id", deleteVideo);
 contentRouter.get("/edit-video/:id", getEditVideo);
 contentRouter.post("/:url/view", postView);
 contentRouter.post("/:url/update", postUpdate);
+contentRouter.post("/:id/tagsupdate", postTagsUpdate);
 
 export default contentRouter;

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const videoSchema = new Schema({
   title: { type: String, required: "Title is missing" },
   description: { type: String },
-  tags: { type: String },
+  tags: { type: Array },
   views: { type: Number, default: 0 },
   fileUrl: { type: String, required: "File URL is missing" },
   date: { type: Date, default: Date.now },
