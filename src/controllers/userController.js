@@ -197,11 +197,13 @@ export const deleteUser = async (req, res) => {
   try {
     await User.findByIdAndRemove(req.user.id);
     await Video.findOneAndRemove({ creator: req.user.id });
-    req.flash("info", "Hope to see you again!");
+    req.flash("info", "hope to see you again!");
     res.status(200);
   } catch (err) {
-    console.log(err);
+    req.flash("error", err);
     res.status(400);
+  } finally {
+    res.end();
   }
 };
 

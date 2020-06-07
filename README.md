@@ -16,6 +16,7 @@ Omissions will be added later.
 - [x] build with **webpack & babel**
 - [x] manage data with **mongoose**
 - [x] handle file uploads with **multer**
+- [ ] handle date and time with **moment**
 - [ ] save files with **aws-sdk & multer-s3**
 - [x] log HTTP request with **morgan**
 - [x] security with **helmet**
@@ -165,8 +166,9 @@ Omissions will be added later.
     - [x] Show tags in the video section
     - [x] Prevent users input same tags repeatedly
     - [x] Break words for tags
-  - [ ] Ask user if he/she is certain to delete his/her account
-  - [ ] Make client dynamically show if all forms are valid
+  - [x] Ask user if he/she is certain to delete his/her account
+  - [x] Make comments hidden at default
+  - [ ] Install 'moment.js'
   - [ ] Post and delete comments
 - [ ] Modify 'Delete' button's position to stick to the bottom
 - [ ] Delete videos and comments when deleting one's account
@@ -288,6 +290,14 @@ _Day 6_</br>
 
 - I must make `overflow-y: visible` to enable scroll when a modal is open
 
-- I must not use ```enctype="multipart/form-data"``` when a form doesn't include file uploads. I don't know why for now.
+- I must not use `enctype="multipart/form-data"` when a form doesn't include file uploads. I don't know why for now.
 
-- When using ```axios```, the server-side ```res.redirect``` doesn't work. I have to handle response within axios function.
+- When using `axios`, the server-side `res.redirect` doesn't work. I have to handle response within axios, using `window.location`.
+
+- submit action works with form tag, not the input tag.
+
+- Read-only error happens in strict mode when I try to change a value of an object that refers to another object (which is more original(?)) -- I didn't understand this thoroughly, thus need to study further about this concept.
+
+- When I use `axios`, I must not forget to put `res.end()` in the server-side javascript.
+
+_Day 7_</br>

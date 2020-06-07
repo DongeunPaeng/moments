@@ -1,5 +1,6 @@
 import Video from "../models/Video";
 import User from "../models/User";
+import Comment from "../models/Comment";
 
 export const home = async (req, res) => {
   try {
@@ -119,5 +120,72 @@ export const postTagsUpdate = async (req, res) => {
     console.log(err);
     req.flash("error", "Can't update...");
     res.redirect("back");
+  }
+};
+
+export const videoDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const video = await Video.findById(id).populate("creator");
+    const comment = await Comment.find({ video })
+      .sort({ _id: -1 })
+      .populate("writer");
+    req.flash("success", "Leave a comment!");
+    res.render("videoDetail", { title: "video", video, comment });
+  } catch (err) {
+    console.log(err);
+    req.flash("error", "Oops! Something happened...");
+    res.redirect("/");
+  }
+};
+
+export const addComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { comment },
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    const user = await User.findById(req.user.id);
+    const newComment = await Comment.create({
+      text: comment,
+      writer: user,
+      video,
+    });
+    video.comment.push(newComment);
+    video.save();
+    user.comment.push(newComment);
+    user.save();
+    res.send(newComment);
+    res.status(200);
+  } catch (err) {
+    res.status(400);
+    console.log(err);
+  } finally {
+    res.end();
+  }
+};
+
+export const deleteComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { commentId },
+  } = req;
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      $pull: { comment: commentId },
+    });
+    await Video.findByIdAndUpdate(id, {
+      $pull: { comment: commentId },
+    });
+    await Comment.findByIdAndRemove(commentId);
+    res.status(200);
+  } catch (err) {
+    console.log(err);
+    res.status(400);
+  } finally {
+    res.end();
   }
 };

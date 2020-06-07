@@ -6,8 +6,8 @@ const editVideoDescBtn = document.getElementsByClassName("editVideoDesc");
 const editVideoTagsBtn = document.getElementsByClassName("editVideoTags");
 const overlay = document.getElementsByClassName("modal-overlay");
 
-const handleEnded = () => {
-  const videoUrl = videoContent.src.split("/")[4];
+const handleEnded = (e) => {
+  const videoUrl = e.target.src.split("/")[4];
   axios.post(`/contents/${videoUrl}/view`, { url: videoUrl });
 };
 
@@ -185,6 +185,11 @@ if (videoContent) {
   addView();
 }
 
-if (editVideoTitleBtn && editVideoDescBtn && editVideoTagsBtn && overlay) {
+if (
+  editVideoTitleBtn[0] &&
+  editVideoDescBtn[0] &&
+  editVideoTagsBtn[0] &&
+  overlay[0]
+) {
   editVideo();
 }

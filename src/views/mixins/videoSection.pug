@@ -3,7 +3,7 @@ mixin videoSection(video={})
         video.videoContent.w-full.h-64.object-cover.p-1(src=`/${video.fileUrl}` controls)
         .px-6.py-4
             .flex.justify-start.items-center
-                .text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
+                a(href=`/contents/${video.id}/detail`).text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
                 if loggedUser && video.creator === loggedUser.email
                     button.editVideoTitle.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
             .text-gray-600.text-sm.mb-2 created by #{video.creator}
@@ -15,7 +15,8 @@ mixin videoSection(video={})
         .px-6.py-4
             each tag in video.tags
                 span.videoTags.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.mb-1.break-all ##{tag}
-            button.editVideoTags.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
+            if loggedUser && video.creator === loggedUser.email
+                button.editVideoTags.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
         .px-6.py-4
             if loggedUser && video.creator === loggedUser.email
                 .block
@@ -33,4 +34,4 @@ mixin videoSection(video={})
                             .simple-tags.shadow.appearance-none.outline-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(type="text" value=array)
                             p.text-gray-600.text-xs Press #[strong Comma(,)] or #[strong Space] key to make tags!
                         .items-center.justify-between(class='md:flex')
-                            button#submitBtn.my-2.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Update
+                            button.submitBtn.my-2.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Update
