@@ -16,8 +16,9 @@ Omissions will be added later.
 - [x] build with **webpack & babel**
 - [x] manage data with **mongoose**
 - [x] handle file uploads with **multer**
-- [ ] handle date and time with **moment**
+- [x] handle date and time with **moment**
 - [ ] save files with **aws-sdk & multer-s3**
+- [ ] search with **lunr**
 - [x] log HTTP request with **morgan**
 - [x] security with **helmet**
 - [x] store sessions with **express-session & connect-mongo**
@@ -150,7 +151,7 @@ Omissions will be added later.
 
 - [x] Fix CSS in header, upload, etc.
 - [x] Use 'Metro UI' to make tags input
-- [ ] Work on some client-side JS
+- [x] Work on some client-side JS
   - [x] Count views
     - [x] Make video.js
     - [x] Install 'axios'
@@ -168,12 +169,9 @@ Omissions will be added later.
     - [x] Break words for tags
   - [x] Ask user if he/she is certain to delete his/her account
   - [x] Make comments hidden at default
-  - [ ] Install 'moment.js'
-  - [ ] Post and delete comments
-- [ ] Modify 'Delete' button's position to stick to the bottom
-- [ ] Delete videos and comments when deleting one's account
-- [ ] Enable hashtag
-- [ ] Store hashtags in mongo
+  - [x] Install 'moment.js'
+  - [x] Post and delete comments
+- [x] Modify 'Delete' button's position to stick to the bottom
 - [ ] Search
 
 ---
@@ -299,5 +297,7 @@ _Day 6_</br>
 - Read-only error happens in strict mode when I try to change a value of an object that refers to another object (which is more original(?)) -- I didn't understand this thoroughly, thus need to study further about this concept.
 
 - When I use `axios`, I must not forget to put `res.end()` in the server-side javascript.
+
+- Don't forget `self-end` to make an element stick to the bottom of its parent div.
 
 _Day 7_</br>

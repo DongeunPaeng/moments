@@ -33,6 +33,7 @@ const Tags = (element) => {
       li.innerHTML = `${currentValue} <input type='hidden' name='tags[]' value=${currentValue}><a><button>&times;</button></a>`;
       li.querySelector("a").addEventListener("click", (e) => {
         if (e.offsetX === 0 && e.offsetY === 0) {
+          e.preventDefault();
           return false;
         } else {
           onDelete(index);

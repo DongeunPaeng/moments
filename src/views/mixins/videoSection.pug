@@ -1,6 +1,6 @@
 mixin videoSection(video={})
-    .max-w-sm.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2
-        video.videoContent.w-full.h-64.object-cover.p-1(src=`/${video.fileUrl}` controls)
+    .max-w-sm.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2.flex.flex-wrap
+        video.block.videoContent.w-full.h-64.object-cover.p-1(src=`/${video.fileUrl}` controls)
         .px-6.py-4
             .flex.justify-start.items-center
                 a(href=`/contents/${video.id}/detail`).text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
@@ -17,7 +17,7 @@ mixin videoSection(video={})
                 span.videoTags.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.mb-1.break-all ##{tag}
             if loggedUser && video.creator === loggedUser.email
                 button.editVideoTags.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
-        .px-6.py-4
+        .px-6.py-4.block.w-full.self-end
             if loggedUser && video.creator === loggedUser.email
                 .block
                     a(href=`/contents/delete-video/${video.id}`)
