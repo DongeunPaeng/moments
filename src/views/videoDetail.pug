@@ -4,7 +4,7 @@ block content
     if video
         .container.mx-auto.flex.flex-wrap.justify-center.font-body.mt-0
             .max-w-xl.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2
-                video.videoContent.w-full.object-cover.p-1(src=video.fileUrl controls autoplay loop mute playsinline type="video/mp4")
+                video.videoContent.w-full.object-cover.p-1(src=video.fileUrl controls)
                 .px-6.py-4
                     .flex.justify-start.items-center
                         a(href=`/contents/${video.id}/detail`).text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
