@@ -35,7 +35,7 @@ Omissions will be added later.
 
 #### Jobs to get done
 
-##### Day 1
+##### Chapter 1
 
 - [x] Directory setup for build (src, dist)
 - [x] Install webpack and webpack-cli
@@ -58,7 +58,7 @@ Omissions will be added later.
 - [x] Make view folder
 - [x] Make a basic router
 
-##### Day 2
+##### Chapter 2
 
 - [x] Read through all babel documents
 - [x] Understand babel/node
@@ -73,7 +73,7 @@ Omissions will be added later.
 - [x] Make header with responsive navbar
 - [x] Make fake contents at home page
 
-##### Day 3
+##### Chapter 3
 
 - [x] Populate cards up to 10 fake cards
 - [x] Brings cards closer to each other in the large screen
@@ -111,7 +111,7 @@ Omissions will be added later.
 - [x] Use passport to authenticate users
 - [x] Understand what bodyparser does exactly, and what urlencoded means
 
-##### Day 4
+##### Chapter 4
 
 - [x] Enable duplicate login
 - [x] Fix login page in mobile view
@@ -135,7 +135,7 @@ Omissions will be added later.
 - [x] Show each video's creator in each video card
 - [x] Enable deleting videos
 
-##### Day 5
+##### Chapter 5
 
 - [x] Install 'password-validator'
 - [x] Install 'email-validator'
@@ -149,7 +149,7 @@ Omissions will be added later.
 - [x] Validate password at changePassword.pug
 - [x] Show flash when a user tries to login with wrong email address
 
-##### Day 6
+##### Chapter 6
 
 - [x] Fix CSS in header, upload, etc.
 - [x] Use 'Metro UI' to make tags input
@@ -175,7 +175,7 @@ Omissions will be added later.
   - [x] Post and delete comments
 - [x] Modify 'Delete' button's position to stick to the bottom
 
-##### Day 7
+##### Chapter 7
 
 - [x] Install 'fuse.js'
 - [x] Search
@@ -183,13 +183,13 @@ Omissions will be added later.
 - [x] Install 'aws-sdk'
 - [x] Change upload directory to AWS S3
 - [x] Move MongoDB from local to Atlas cloud
-- [ ] Deploy
+- [x] Deploy
 
 ---
 
 #### Learnings
 
-_Day 1_</br>
+_Chapter 1_</br>
 
 - The official webpack documentation says **not to** use 'extract-text-webpack-plugin' for webpack v4 or above. I should use 'mini-css-extract-plugin' instead.
 
@@ -203,7 +203,7 @@ _Day 1_</br>
 
 - Order of express middlewares are **IMPORTANT**. Helmet comes first. Others come later.
 
-_Day 2_</br>
+_Chapter 2_</br>
 
 - Without express.static, I would have to make thousands of routers for every image files, etc.
 
@@ -219,7 +219,7 @@ _Day 2_</br>
 
 - Without babel-node, you can't execute app.js file if it is written in ES6.
 
-_Day 3_</br>
+_Chapter 3_</br>
 
 - To let body-parser to parse POSTed data, you have to put in 'name' attributes in your form. body-parser can't read id attributes.
 
@@ -251,7 +251,7 @@ _Day 3_</br>
 
 - When you find a user using `User`, don't forget to put async and await; otherwise you'll get a very long Query object instead.
 
-_Day 4_</br>
+_Chapter 4_</br>
 
 - Unlike the official document, I don't need `cookie-parser` to use `express-flash`.
 
@@ -269,7 +269,7 @@ _Day 4_</br>
 
 - Plus signs in URL can't be read via `req.query` and cause e-mail verification error. I should use `req.originalUrl.split` to get the full URL.
 
-_Day 5_</br>
+_Chapter 5_</br>
 
 - I can use `findOneAndUpdate` to delete a user's comments or videos easily.
 
@@ -283,7 +283,7 @@ _Day 5_</br>
 
 - If I want to make `if` statement to check if `req.user` exists or not, I have to declare the user first.
 
-_Day 6_</br>
+_Chapter 6_</br>
 
 - Don't forget to add class `w-full` to prevent words overflow to outside its container.
 
@@ -311,7 +311,7 @@ _Day 6_</br>
 
 - Don't forget `self-end` to make an element stick to the bottom of its parent div.
 
-_Day 7_</br>
+_Chapter 7_</br>
 
 - Mongoose spits out 'Maximum call stack size exceed' error at 'cloneObject' when there's a circular reference among Schemas; in this case, I should use update(), instead of .push method.
 
