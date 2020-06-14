@@ -29,7 +29,7 @@ Omissions will be added later.
 - [x] make beautiful with **tailwind css**
 - [x] save files with **aws-sdk & multer-s3**
 - [x] save data on **Atlas**
-- [ ] deploy with **heroku**
+- [x] deploy with **heroku**
 
 ---
 
