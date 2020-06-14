@@ -1,52 +1,55 @@
 extends main
 
 block content
-    .container.mx-auto.flex.flex-wrap.justify-center.font-body.mt-0
-        .max-w-xl.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2
-            video.videoContent.w-full.object-cover.p-1(src=`/${video.fileUrl}` controls)
-            .px-6.py-4
-                .flex.justify-start.items-center
-                    a(href=`/contents/${video.id}/detail`).text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
-                    if loggedUser && video.creator.email === loggedUser.email
-                        button.editVideoTitle.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
-                .text-gray-600.text-sm.mb-2 created by #{video.creator.email}
-                .text-gray-600.text-sm.mb-2 #{video.views} views
-                .flex.justify-start.items-center
-                    .text-gray-600.mb-2.-mr-2.pr-3.break-words.w-full.videoDesc=video.description
-                    if loggedUser && video.creator.email === loggedUser.email
-                        button.editVideoDesc.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
-            .px-6.py-4
-                each tag in video.tags
-                    span.videoTags.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.break-all ##{tag}
-                if loggedUser && video.creator.email === loggedUser.email
-                    button.editVideoTags.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
-            if loggedUser && video.creator.email === loggedUser.email
+    if video
+        .container.mx-auto.flex.flex-wrap.justify-center.font-body.mt-0
+            .max-w-xl.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2
+                video.videoContent.w-full.object-cover.p-1(src=video.fileUrl controls)
                 .px-6.py-4
-                    .block
-                        a(href=`/contents/delete-video/${video.id}`)
-                            button.bg-red-600.text-white.py-1.px-4.mt-2.mx-1.rounded.w-sm(class='hover:bg-red-800') Delete
-            .px-6.py-4.text-center
-                button#openBtn.text-gray-600.text-sm Show Comments 🔽
-                #comments.text-gray-600.text-sm
-                    if loggedUser
-                        form#commentForm
-                            input#commentInput.shadow.appearance-none.outline-none.border.rounded.w-full.mt-6.py-2.px-3.text-gray-600.leading-tight(type="text")
-                    else
-                        p.mt-2 #[a(href="/login" class="font-bold") Log in] to leave your comment!
-                    ul#commentList.pt-6
-                        each item in comment
-                            -let date = item.date
-                            -let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                            -let d = date.getDate()
-                            -let m = months[date.getMonth()]
-                            -let y = date.getFullYear()
-                            -let h = date.getHours()
-                            -let mm = (date.getMinutes()<10?'0':'') + date.getMinutes()
-                            -let prettyD = `${m} ${d}, ${y} ${h}:${mm}`
-                            li(id=item.id).py-2
-                                .creatorInfo.flex.justify-start
-                                    p.mr-1=item.writer.email
-                                    p.mx-1=prettyD
-                                    if loggedUser && loggedUser.email === item.writer.email
-                                        button.deleteCommentBtn.ml-1 ❌
-                                p.text-base.text-left=item.text
+                    .flex.justify-start.items-center
+                        a(href=`/contents/${video.id}/detail`).text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
+                        if loggedUser && video.creator.email === loggedUser.email
+                            button.editVideoTitle.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
+                    .text-gray-600.text-sm.mb-2 created by #{video.creator.email}
+                    .text-gray-600.text-sm.mb-2 #{video.views} views
+                    .flex.justify-start.items-center
+                        .text-gray-600.mb-2.-mr-2.pr-3.break-words.w-full.videoDesc=video.description
+                        if loggedUser && video.creator.email === loggedUser.email
+                            button.editVideoDesc.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
+                .px-6.py-4
+                    each tag in video.tags
+                        span.videoTags.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.break-all ##{tag}
+                    if loggedUser && video.creator.email === loggedUser.email
+                        button.editVideoTags.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
+                if loggedUser && video.creator.email === loggedUser.email
+                    .px-6.py-4
+                        .block
+                            a(href=`/contents/delete-video/${video.id}`)
+                                button.bg-red-600.text-white.py-1.px-4.mt-2.mx-1.rounded.w-sm(class='hover:bg-red-800') Delete
+                .px-6.py-4.text-center
+                    button#openBtn.text-gray-600.text-sm Show Comments 🔽
+                    #comments.text-gray-600.text-sm
+                        if loggedUser
+                            form#commentForm
+                                input#commentInput.shadow.appearance-none.outline-none.border.rounded.w-full.mt-6.py-2.px-3.text-gray-600.leading-tight(type="text")
+                        else
+                            p.mt-2 #[a(href="/login" class="font-bold") Log in] to leave your comment!
+                        ul#commentList.pt-6
+                            each item in comment
+                                -let date = item.date
+                                -let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                                -let d = date.getDate()
+                                -let m = months[date.getMonth()]
+                                -let y = date.getFullYear()
+                                -let h = date.getHours()
+                                -let mm = (date.getMinutes()<10?'0':'') + date.getMinutes()
+                                -let prettyD = `${m} ${d}, ${y} ${h}:${mm}`
+                                li(id=item.id).py-2
+                                    .creatorInfo.flex.justify-start
+                                        p.mr-1=item.writer.email
+                                        p.mx-1=prettyD
+                                        if loggedUser && loggedUser.email === item.writer.email
+                                            button.deleteCommentBtn.ml-1 ❌
+                                    p.text-base.text-left=item.text
+    else
+        p.container.mx-auto.font-body.text-xl.text-center.font-semibold.mt-10 No Video! 😥

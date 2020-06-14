@@ -1,6 +1,7 @@
 import Video from "../models/Video";
 import User from "../models/User";
 import Comment from "../models/Comment";
+import Fuse from "fuse.js";
 
 export const home = async (req, res) => {
   try {
@@ -17,7 +18,7 @@ export const getUpload = (req, res) => {
 
 export const postUpload = async (req, res) => {
   const {
-    file: { filename },
+    file: { location },
     body: { title, description, tags },
   } = req;
   try {
@@ -25,7 +26,7 @@ export const postUpload = async (req, res) => {
       title,
       description,
       tags,
-      fileUrl: "videos/".concat(filename),
+      fileUrl: location,
       creator: req.user.id,
     });
     await User.findById(req.user.id).then((user) => {
@@ -56,11 +57,12 @@ export const deleteVideo = async (req, res) => {
         { videos: video.id },
         { $pull: { videos: video.id } }
       );
+      await Comment.deleteMany({ video: video.id });
       req.flash("success", "Video deleted successfully");
       res.redirect("back");
     }
   } catch (err) {
-    req.flash("error", "Access denied");
+    console.log(err);
     res.redirect("/");
   }
 };
@@ -74,7 +76,9 @@ export const postView = async (req, res) => {
     params: { url },
   } = req;
   try {
-    const video = await Video.findOne({ fileUrl: `videos/${url}` });
+    const video = await Video.findOne({
+      fileUrl: `https://momentsproject.s3.ap-northeast-2.amazonaws.com/${url}`,
+    });
     video.views++;
     video.save();
     res.status(200);
@@ -92,7 +96,9 @@ export const postUpdate = async (req, res) => {
     body: { newContent, type },
   } = req;
   try {
-    const video = await Video.findOne({ fileUrl: `videos/${url}` });
+    const video = await Video.findOne({
+      fileUrl: `https://momentsproject.s3.ap-northeast-2.amazonaws.com/${url}`,
+    });
     video[type] = newContent;
     video.save();
     res.status(200);
@@ -132,7 +138,6 @@ export const videoDetail = async (req, res) => {
     const comment = await Comment.find({ video })
       .sort({ _id: -1 })
       .populate("writer");
-    req.flash("success", "Leave a comment!");
     res.render("videoDetail", { title: "video", video, comment });
   } catch (err) {
     console.log(err);
@@ -147,17 +152,15 @@ export const addComment = async (req, res) => {
     body: { comment },
   } = req;
   try {
-    const video = await Video.findById(id);
     const user = await User.findById(req.user.id);
+    const video = await Video.findById(id);
     const newComment = await Comment.create({
       text: comment,
       writer: user,
       video,
     });
-    video.comment.push(newComment);
-    video.save();
-    user.comment.push(newComment);
-    user.save();
+    video.update({ $push: { comment: newComment } });
+    user.update({ $push: { comment: newComment } });
     res.send(newComment);
     res.status(200);
   } catch (err) {
@@ -187,5 +190,28 @@ export const deleteComment = async (req, res) => {
     res.status(400);
   } finally {
     res.end();
+  }
+};
+
+export const search = async (req, res) => {
+  const {
+    query: { search },
+  } = req;
+  try {
+    const allVideos = await Video.find().populate("creator");
+    const options = {
+      includeScore: true,
+      findAllMatches: true,
+      threshold: 1.0,
+      distance: 1000,
+      keys: ["title", "tags", "description", "comment"],
+    };
+    const fuse = new Fuse(allVideos, options);
+    const result = fuse.search(search);
+    res.render("search", { title: "search", result });
+  } catch (err) {
+    console.log(err);
+    req.flash("error", "Search failed");
+    res.redirect("/");
   }
 };

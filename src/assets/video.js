@@ -7,7 +7,7 @@ const editVideoTagsBtn = document.getElementsByClassName("editVideoTags");
 const overlay = document.getElementsByClassName("modal-overlay");
 
 const handleEnded = (e) => {
-  const videoUrl = e.target.src.split("/")[4];
+  const videoUrl = e.target.src.split("/")[3];
   axios.post(`/contents/${videoUrl}/view`, { url: videoUrl });
 };
 

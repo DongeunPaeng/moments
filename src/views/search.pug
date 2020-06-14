@@ -1,3 +1,15 @@
-.container.mx-auto.flex.flex-wrap.justify-center.font-body
-    input.shadow.appearance-none.outline-none.border.rounded.max-w-md.py-2.px-3.text-gray-600.leading-tight(type="text")
-    button(type="submit").text-gray-600.ml-2 Search
+extends main
+include mixins/videoSection
+
+block content
+    .container.mx-auto.flex.flex-wrap.justify-center.font-body.mt-8
+        each item in result
+            +videoSection({
+                id: item.item.id,
+                tags: item.item.tags,
+                creator: item.item.creator.email,
+                title: item.item.title,
+                views: item.item.views,
+                description: item.item.description,
+                fileUrl: item.item.fileUrl
+            })

@@ -1,4 +1,7 @@
+import aws from "aws-sdk";
 import express from "express";
+import multer from "multer";
+import multers3 from "multer-s3";
 import {
   getUpload,
   postUpload,
@@ -11,10 +14,21 @@ import {
   addComment,
   deleteComment,
 } from "../controllers/contentController";
-import multer from "multer";
 
 const contentRouter = express.Router();
-const upload = multer({ dest: "src/uploads/videos/" });
+
+const s3 = new aws.S3({
+  accessKeyId: process.env.AWS_KEY,
+  secretAccessKey: process.env.AWS_PRIVATE_KEY,
+});
+
+const upload = multer({
+  storage: multers3({
+    s3,
+    bucket: "momentsproject",
+    acl: "public-read",
+  }),
+});
 
 contentRouter.get("/upload", getUpload);
 contentRouter.post("/upload", upload.single("content"), postUpload);

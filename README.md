@@ -17,8 +17,7 @@ Omissions will be added later.
 - [x] manage data with **mongoose**
 - [x] handle file uploads with **multer**
 - [x] handle date and time with **moment**
-- [ ] save files with **aws-sdk & multer-s3**
-- [ ] search with **lunr**
+- [x] fuzzy search with **fuse**
 - [x] log HTTP request with **morgan**
 - [x] security with **helmet**
 - [x] store sessions with **express-session & connect-mongo**
@@ -28,6 +27,9 @@ Omissions will be added later.
 - [x] Validate forms with **password-validator** and **email-validator**
 - [x] make views with **pug**
 - [x] make beautiful with **tailwind css**
+- [x] save files with **aws-sdk & multer-s3**
+- [x] save data on **Atlas**
+- [ ] deploy with **heroku**
 
 ---
 
@@ -172,7 +174,16 @@ Omissions will be added later.
   - [x] Install 'moment.js'
   - [x] Post and delete comments
 - [x] Modify 'Delete' button's position to stick to the bottom
-- [ ] Search
+
+##### Day 7
+
+- [x] Install 'fuse.js'
+- [x] Search
+- [x] Install 'multer-s3'
+- [x] Install 'aws-sdk'
+- [x] Change upload directory to AWS S3
+- [x] Move MongoDB from local to Atlas cloud
+- [ ] Deploy
 
 ---
 
@@ -301,3 +312,9 @@ _Day 6_</br>
 - Don't forget `self-end` to make an element stick to the bottom of its parent div.
 
 _Day 7_</br>
+
+- Mongoose spits out 'Maximum call stack size exceed' error at 'cloneObject' when there's a circular reference among Schemas; in this case, I should use update(), instead of .push method.
+
+- I must add `acl: 'public-read'` property to multer-s3; otherwise people will get 403 error from AWS.
+
+- As of 14 June 2020, MongoDB Compass GUI is easier to use than Atlas.

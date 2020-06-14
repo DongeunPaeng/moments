@@ -2,7 +2,6 @@ extends main
 include mixins/videoSection
 
 block content
-    include search
     .container.mx-auto.flex.flex-wrap.justify-center.font-body.mt-8
         each item in videos
             +videoSection({

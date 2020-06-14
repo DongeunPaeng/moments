@@ -10,7 +10,7 @@ import {
   postConfirmEmail,
   postLogin,
 } from "../controllers/userController";
-import { home } from "../controllers/contentController";
+import { home, search } from "../controllers/contentController";
 
 const globalRouter = express.Router();
 
@@ -31,5 +31,6 @@ globalRouter.get("/confirmEmail", getConfirmEmail);
 globalRouter.get("/login", getLogin);
 globalRouter.get("/logout", getLogout);
 globalRouter.post("/login", postConfirmEmail, postLogin);
+globalRouter.get("/search", search);
 
 export default globalRouter;
