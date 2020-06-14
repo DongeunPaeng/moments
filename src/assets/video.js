@@ -18,7 +18,7 @@ const addView = () => {
 };
 
 const sendUpdate = (videoContent, newContent, type) => {
-  const videoUrl = videoContent.src.split("/")[4];
+  const videoUrl = videoContent.src.split("/")[3];
   axios.post(`/contents/${videoUrl}/update`, {
     url: videoUrl,
     newContent,
