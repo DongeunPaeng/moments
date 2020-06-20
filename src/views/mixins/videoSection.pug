@@ -28,6 +28,7 @@ mixin videoSection(video={})
             .modal-container.bg-white.mx-auto.rounded.shadow-lg.z-50.overflow-y-auto
                 .flex.justify-between.items-center
                     form.bg-white.rounded.px-8.pt-6.pb-8(action=`/contents/${video.id}/tagsupdate` method="post")
+                        .mb-4=video.title
                         .mb-4
                             - const array = video.tags.toString()
                             label.block.text-gray-600.text-sm.font-bold.mb-2(for="tags")

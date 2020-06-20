@@ -22,7 +22,7 @@ Omissions will be added later.
 - [x] security with **helmet**
 - [x] store sessions with **express-session & connect-mongo**
 - [x] Authenticate user with **nodemailer**
-- [x] get req.body wiht **body-parser**
+- [x] get req.body with **body-parser**
 - [x] AJAX requests with **axios**
 - [x] Validate forms with **password-validator** and **email-validator**
 - [x] make views with **pug**
@@ -184,6 +184,11 @@ Omissions will be added later.
 - [x] Change upload directory to AWS S3
 - [x] Move MongoDB from local to Atlas cloud
 - [x] Deploy
+
+##### Chapter 8
+
+- [ ] Bug fix - when editing tags, sample list consists of the most recent content's tags
+- [ ] Bug fix - can't edit title, description, and tags in video detail page
 
 ---
 

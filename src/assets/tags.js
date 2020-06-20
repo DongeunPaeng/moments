@@ -85,7 +85,7 @@ const Tags = (element) => {
 };
 
 (() => {
-  let DOMSimpleTags = document.querySelectorAll(".simple-tags");
+  let DOMSimpleTags = document.querySelectorAll(".simple-tags"); // modify here to fix the bug
   DOMSimpleTags = Array.from(DOMSimpleTags);
   DOMSimpleTags.forEach((currentValue) => {
     new Tags(currentValue);
