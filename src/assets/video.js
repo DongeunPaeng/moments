@@ -3,8 +3,6 @@ import axios from "axios";
 const videoContent = document.getElementsByClassName("videoContent");
 const editVideoTitleBtn = document.getElementsByClassName("editVideoTitle");
 const editVideoDescBtn = document.getElementsByClassName("editVideoDesc");
-const editVideoTagsBtn = document.getElementsByClassName("editVideoTags");
-const overlay = document.getElementsByClassName("modal-overlay");
 
 const handleEnded = (e) => {
   const videoUrl = e.target.src.split("/")[3];
@@ -146,38 +144,10 @@ const handleEditVideoDesc = (e) => {
   }
 };
 
-const toggleModal = () => {
-  const body = document.querySelector("body");
-  const modal = document.querySelector(".modal");
-  modal.classList.toggle("opacity-0"); // make transparent when modal is closed
-  modal.classList.toggle("pointer-events-none"); // do something when modal is clicked
-  body.classList.toggle("modal-active"); // enable scroll when modal is open
-};
-
-document.onkeydown = (e) => {
-  e = e || window.event;
-  var isEscape = false;
-  if ("key" in e) {
-    isEscape = e.key === "Escape" || e.key === "Esc";
-  } else {
-    isEscape = e.keyCode === 27;
-  }
-  if (isEscape && document.body.classList.contains("modal-active")) {
-    toggleModal();
-  }
-};
-
-const handleEditVideoTags = (e) => {
-  e.preventDefault();
-  toggleModal();
-};
-
 const editVideo = () => {
   for (let i = 0; i < editVideoTitleBtn.length; i++) {
     editVideoTitleBtn[i].addEventListener("click", handleEditVideoTitle);
     editVideoDescBtn[i].addEventListener("click", handleEditVideoDesc);
-    editVideoTagsBtn[i].addEventListener("click", handleEditVideoTags);
-    overlay[i].addEventListener("click", handleEditVideoTags);
   }
 };
 
@@ -185,11 +155,6 @@ if (videoContent) {
   addView();
 }
 
-if (
-  editVideoTitleBtn[0] &&
-  editVideoDescBtn[0] &&
-  editVideoTagsBtn[0] &&
-  overlay[0]
-) {
+if (editVideoTitleBtn[0] && editVideoDescBtn[0]) {
   editVideo();
 }

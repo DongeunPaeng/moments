@@ -1,3 +1,8 @@
+#foodlist.flex.items-center.justify-center.flex-wrap.px-6.py-6.font-body.text-gray-600
+    - let array = ['체다앤올리', '똠얌꿍', '신전 떡볶이', '땅코 본점', '페어링룸', '나리의집', '굴다리소곱창', '쿠치나후', '일미락', '펄쉘', '오복수산', '엘피노323', '연남동 툭툭누들타이', '금돼지 식당', '유어네이키드치즈', '정식당', '가베도', '렁팡스', '와하카', '다로베', '팩피', '남영돈']
+    - let item = array[Math.floor(Math.random() * array.length)];
+    p 식당 제안: #{item}
+
 .flex.items-center.justify-center.flex-wrap.px-6.py-6.font-body
     .text-gray-600.text-sm.mx-3 #{siteName} #{new Date().getFullYear()} &copy All rights reserved.
     a(href='#').text-gray-600.text-sm.mx-3 Need Help?

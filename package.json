@@ -4,7 +4,7 @@
   "description": "video sharing platform",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --watch",
     "server": "nodemon --exec babel-node src/app.js",
     "start": "babel-node src/app.js"
   },

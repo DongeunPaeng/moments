@@ -187,14 +187,22 @@ Omissions will be added later.
 
 ##### Chapter 8
 
-- [ ] Bug fix - when editing tags, sample list consists of the most recent content's tags
+- [x] Bug fix - when editing tags, sample list consists of the most recent content's tags
+- [ ] Bug fix - can't delete tags
 - [ ] Bug fix - can't edit title, description, and tags in video detail page
+- [ ] Bug fix - prevent uploading pictures on mobile
+- [ ] Bug fix - enable video player on iOS devices
+- [ ] Investigate the reason that users can't add tags with comma(,) on mobile
+- [x] Apply custom domain to the heroku app
+- [x] Understand the difference between HTTP and HTTPS
+- [x] Understand RSA encryption mechanism
+- [ ] Apply TLS/SSL certificate to the heroku app
 
 ---
 
 #### Learnings
 
-_Chapter 1_</br>
+_Chapter 1_<br>
 
 - The official webpack documentation says **not to** use 'extract-text-webpack-plugin' for webpack v4 or above. I should use 'mini-css-extract-plugin' instead.
 
@@ -208,7 +216,7 @@ _Chapter 1_</br>
 
 - Order of express middlewares are **IMPORTANT**. Helmet comes first. Others come later.
 
-_Chapter 2_</br>
+_Chapter 2_<br>
 
 - Without express.static, I would have to make thousands of routers for every image files, etc.
 
@@ -224,7 +232,7 @@ _Chapter 2_</br>
 
 - Without babel-node, you can't execute app.js file if it is written in ES6.
 
-_Chapter 3_</br>
+_Chapter 3_<br>
 
 - To let body-parser to parse POSTed data, you have to put in 'name' attributes in your form. body-parser can't read id attributes.
 
@@ -256,7 +264,7 @@ _Chapter 3_</br>
 
 - When you find a user using `User`, don't forget to put async and await; otherwise you'll get a very long Query object instead.
 
-_Chapter 4_</br>
+_Chapter 4_<br>
 
 - Unlike the official document, I don't need `cookie-parser` to use `express-flash`.
 
@@ -274,7 +282,7 @@ _Chapter 4_</br>
 
 - Plus signs in URL can't be read via `req.query` and cause e-mail verification error. I should use `req.originalUrl.split` to get the full URL.
 
-_Chapter 5_</br>
+_Chapter 5_<br>
 
 - I can use `findOneAndUpdate` to delete a user's comments or videos easily.
 
@@ -288,7 +296,7 @@ _Chapter 5_</br>
 
 - If I want to make `if` statement to check if `req.user` exists or not, I have to declare the user first.
 
-_Chapter 6_</br>
+_Chapter 6_<br>
 
 - Don't forget to add class `w-full` to prevent words overflow to outside its container.
 
@@ -316,10 +324,15 @@ _Chapter 6_</br>
 
 - Don't forget `self-end` to make an element stick to the bottom of its parent div.
 
-_Chapter 7_</br>
+_Chapter 7_<br>
 
 - Mongoose spits out 'Maximum call stack size exceed' error at 'cloneObject' when there's a circular reference among Schemas; in this case, I should use update(), instead of .push method.
 
 - I must add `acl: 'public-read'` property to multer-s3; otherwise people will get 403 error from AWS.
 
 - As of 14 June 2020, MongoDB Compass GUI is easier to use than Atlas.
+
+_Chapter 8_<br>
+
+- addEventListner must be added once. Otherwise the same event will be invoked multiple times.
+- If something fires many times repeatedly, it is highly likely to be the scoping issue of the addEventListener.

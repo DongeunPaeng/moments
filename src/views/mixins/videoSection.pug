@@ -16,23 +16,9 @@ mixin videoSection(video={})
             each tag in video.tags
                 span.videoTags.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.mb-1.break-all ##{tag}
             if loggedUser && video.creator === loggedUser.email
-                button.editVideoTags.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
+                button.editVideoTags(id=video.id).fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
         .px-6.py-4.block.w-full.self-end
             if loggedUser && video.creator === loggedUser.email
                 .block
                     a(href=`/contents/delete-video/${video.id}`)
                         button.bg-red-600.text-white.py-1.px-4.mt-4.mx-1.rounded.w-sm(class='hover:bg-red-800') Delete
-
-        .modal.opacity-0.pointer-events-none.fixed.w-full.h-full.top-0.left-0.flex.items-center.justify-center.z-50
-            .modal-overlay.absolute.w-full.h-full.bg-gray-900.opacity-75
-            .modal-container.bg-white.mx-auto.rounded.shadow-lg.z-50.overflow-y-auto
-                .flex.justify-between.items-center
-                    form.bg-white.rounded.px-8.pt-6.pb-8(action=`/contents/${video.id}/tagsupdate` method="post")
-                        .mb-4=video.title
-                        .mb-4
-                            - const array = video.tags.toString()
-                            label.block.text-gray-600.text-sm.font-bold.mb-2(for="tags")
-                            .simple-tags.shadow.appearance-none.outline-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(type="text" value=array)
-                            p.text-gray-600.text-xs Press #[strong Comma(,)] or #[strong Space] key to make tags!
-                        .items-center.justify-between(class='md:flex')
-                            button.submitBtn.my-2.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800', type="submit") Update
