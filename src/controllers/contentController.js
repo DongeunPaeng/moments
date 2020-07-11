@@ -120,12 +120,13 @@ export const postTagsUpdate = async (req, res) => {
       tags,
     });
     video.save();
-    req.flash("success", "Updated!");
-    res.redirect("home");
+    res.status(200);
   } catch (err) {
     console.log(err);
     req.flash("error", "Can't update...");
-    res.redirect("home");
+    res.status(400);
+  } finally {
+    res.end();
   }
 };
 

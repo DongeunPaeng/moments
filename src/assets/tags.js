@@ -48,7 +48,7 @@ const eventFunction = (e) => {
       tags: tagsArray,
     })
     .then(function (response) {
-      console.log(response);
+      console.log(`response: ${response}`);
     })
     .catch(function (error) {
       console.log(error);

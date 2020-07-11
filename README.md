@@ -189,7 +189,7 @@ Omissions will be added later.
 
 - [x] Bug fix - when editing tags, sample list consists of the most recent content's tags
 - [x] Bug fix - can't delete tags
-- [ ] Bug fix - can't apply edited tags right after adding tags
+- [ ] Bug fix - heroku app doesn't display added tags after editing unlike localhost
 - [ ] Bug fix - can't edit title, description, and tags in video detail page
 - [ ] Bug fix - prevent uploading pictures on mobile
 - [ ] Bug fix - enable video player on iOS devices
