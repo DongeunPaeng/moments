@@ -30,6 +30,7 @@ Omissions will be added later.
 - [x] save files with **aws-sdk & multer-s3**
 - [x] save data on **Atlas**
 - [x] deploy with **heroku**
+- [ ] play video with **video.js**
 
 ---
 
@@ -189,10 +190,10 @@ Omissions will be added later.
 
 - [x] Bug fix - when editing tags, sample list consists of the most recent content's tags
 - [x] Bug fix - can't delete tags
-- [ ] Bug fix - heroku app doesn't display added tags after editing unlike localhost; however, once refreshed, it work...
+- [x] Bug fix - heroku app doesn't display added tags after editing unlike localhost; however, once refreshed, it work...
 - [x] Bug fix - can't edit tags in video detail page
 - [ ] Bug fix - prevent uploading pictures on mobile
-- [ ] Bug fix - enable video player on iOS devices
+- [ ] Bug fix - enable video player on iOS devices using video.js
 - [ ] Investigate the reason that users can't add tags with comma(,) on mobile
 - [x] Apply custom domain to the heroku app
 - [x] Understand the difference between HTTP and HTTPS
