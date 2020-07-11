@@ -189,8 +189,8 @@ Omissions will be added later.
 
 - [x] Bug fix - when editing tags, sample list consists of the most recent content's tags
 - [x] Bug fix - can't delete tags
-- [ ] Bug fix - heroku app doesn't display added tags after editing unlike localhost
-- [ ] Bug fix - can't edit title, description, and tags in video detail page
+- [x] Bug fix - heroku app doesn't display added tags after editing unlike localhost
+- [ ] Bug fix - can't edit tags in video detail page
 - [ ] Bug fix - prevent uploading pictures on mobile
 - [ ] Bug fix - enable video player on iOS devices
 - [ ] Investigate the reason that users can't add tags with comma(,) on mobile
@@ -337,3 +337,4 @@ _Chapter 8_<br>
 
 - addEventListner must be added once. Otherwise the same event will be invoked multiple times.
 - If something fires many times repeatedly, it is highly likely to be the scoping issue of the addEventListener.
+- When posting with axios, I must not redirect or render. I must only send res.status and res.end. Otherwise, the controller will send user duplicate repsonses.

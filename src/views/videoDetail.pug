@@ -20,7 +20,7 @@ block content
                     each tag in video.tags
                         span.videoTags.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-600.mx-1.break-all ##{tag}
                     if loggedUser && video.creator.email === loggedUser.email
-                        button.editVideoTags.fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
+                        button.editVideoTags(id=video.id).fas.fa-pencil-alt.text-gray-500.text-sm.mb-2
                 if loggedUser && video.creator.email === loggedUser.email
                     .px-6.py-4
                         .block
@@ -53,3 +53,18 @@ block content
                                     p.text-base.text-left=item.text
     else
         p.container.mx-auto.font-body.text-xl.text-center.font-semibold.mt-10 No Video! 😥
+    
+    #modal.modal.opacity-0.pointer-events-none.fixed.w-full.h-full.top-0.left-0.flex.items-center.justify-center.z-50
+        #modal-overlay.absolute.w-full.h-full.bg-gray-900.opacity-75
+        .modal-container.bg-white.mx-auto.rounded.shadow-lg.z-50.overflow-y-auto
+            .flex.justify-between.items-center
+                form.bg-white.rounded.px-8.pt-6.pb-8
+                    .modalTitle.mb-4.font-body.text-gray-600
+                    .mb-4
+                        label.block.text-gray-600.text-sm.font-bold.mb-2(for="tags")
+                        .simple-tags.shadow.appearance-none.outline-none.border.rounded.w-full.mb-2.py-2.px-3.text-gray-600.leading-tight(type="text" value="Sample")
+                            ul#listArea
+                            input#inputArea
+                        p.text-gray-600.text-xs Press #[strong Comma(,)] or #[strong Space] key to make tags!
+                    .items-center.justify-between(class='md:flex')
+                        button#submitTags.my-2.bg-gray-600.text-white.font-bold.py-2.px-4.rounded(class='hover:bg-gray-800') Update
