@@ -188,7 +188,7 @@ Omissions will be added later.
 ##### Chapter 8
 
 - [x] Bug fix - when editing tags, sample list consists of the most recent content's tags
-- [ ] Bug fix - can't delete tags
+- [x] Bug fix - can't delete tags
 - [ ] Bug fix - can't edit title, description, and tags in video detail page
 - [ ] Bug fix - prevent uploading pictures on mobile
 - [ ] Bug fix - enable video player on iOS devices
