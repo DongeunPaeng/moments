@@ -10,51 +10,49 @@ let tagsArray;
 
 const postNewTags = (e) => {
   e.preventDefault();
-  // const videoId = e.target.name;
-  // axios.post(`/contents/${videoId}/tagsupdate`, {
-  // tags: tagsArray,
-  // });
 };
 
-const onDelete = (tagsArray) => {
-  const tagListItemBtn = document.getElementsByClassName("tagListItemBtn");
-  for (each of tagListItemBtn) {
-    tagListItemBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      console.log(e.target);
-      // if (e.offsetX === 0 && e.offsetY === 0) {
-      // e.preventDefault();
-      // return false;
-      // } else {
-      // e.preventDefault();
-      // console.log(e.target);
-      // tagsArray = tagsArray.filter((currentValue, index) => {
-      // if (index == i) {
-      // return false;
-      // }
-      // return currentValue;
-      // });
-      // }
+const onDelete = (e) => {
+  e.preventDefault();
+  if (e.offsetX === 0 && e.offsetY === 0) {
+    e.preventDefault();
+    return false;
+  } else {
+    e.preventDefault();
+    const deleteValue = e.target.parentNode.parentNode
+      .querySelector("input")
+      .getAttribute("value");
+    const theIndex = tagsArray.indexOf(deleteValue);
+    tagsArray = tagsArray.filter((currentValue, index) => {
+      if (index === theIndex) {
+        return false;
+      }
+      return currentValue;
     });
+    const deleteLi = e.target.parentNode.parentNode;
+    deleteLi.parentNode.removeChild(deleteLi);
   }
-  DOMRender(tagsArray);
 };
 
 const DOMRender = (tagsArray) => {
   DOMList.innerHTML = "";
   tagsArray.forEach((eachTag) => {
     let li = document.createElement("li");
-    li.innerHTML = `${eachTag} <input type='hidden' name='tags[]' value=${eachTag}><a><button class="tagListItemBtn">&times;</button></a>`;
+    li.innerHTML = `${eachTag} <input type='hidden' name='tags[]' value=${eachTag}><a><button>&times;</button></a>`;
     DOMList.appendChild(li);
+    li.addEventListener("click", onDelete);
   });
-
-  const eventFunction = (e) => {
-    e.preventDefault();
-    console.log(`tagSubmitBtn clicked: ${tagsArray}`);
-  };
-  tagSubmitBtn.addEventListener("click", eventFunction);
-  // onDelete();
 };
+
+const eventFunction = (e) => {
+  const videoId = e.target.parentNode.parentNode.querySelector(".modalTitle")
+    .id;
+  axios.post(`/contents/${videoId}/tagsupdate`, {
+    tags: tagsArray,
+  });
+};
+
+tagSubmitBtn.addEventListener("click", eventFunction);
 
 const toggleModal = (e) => {
   e.preventDefault();
@@ -82,12 +80,13 @@ const toggleModal = (e) => {
 
   if (modalTitle.innerText !== "") {
     modalTitle.innerText = "";
+    modalTitle.id = "";
   } else {
     modalTitle.innerText = videoTitle;
+    modalTitle.id = videoId;
   }
 
   DOMRender(tagsArray);
-  onDelete(tagsArray);
 };
 
 const closeModal = (e) => {
@@ -111,8 +110,10 @@ const closeModal = (e) => {
 
   if (modalTitle.innerText !== "") {
     modalTitle.innerText = "";
+    modalTitle.id = "";
   } else {
     modalTitle.innerText = videoTitle;
+    modalTitle.id = videoId;
   }
 
   if (tagSubmitBtn.name !== "") {
