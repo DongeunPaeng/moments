@@ -43,16 +43,10 @@ const DOMRender = (tagsArray) => {
 const eventFunction = (e) => {
   const videoId = e.target.parentNode.parentNode.querySelector(".modalTitle")
     .id;
-  axios
-    .post(`/contents/${videoId}/tagsupdate`, {
-      tags: tagsArray,
-    })
-    .then(function (response) {
-      console.log(`response: ${response}`);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  axios.post(`/contents/${videoId}/tagsupdate`, {
+    tags: tagsArray,
+  });
+  window.location.reload(true);
 };
 
 if (tagSubmitBtn) {
