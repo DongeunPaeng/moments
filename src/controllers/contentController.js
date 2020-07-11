@@ -121,11 +121,11 @@ export const postTagsUpdate = async (req, res) => {
     });
     video.save();
     req.flash("success", "Updated!");
-    res.redirect("back");
+    res.redirect("home");
   } catch (err) {
     console.log(err);
     req.flash("error", "Can't update...");
-    res.redirect("back");
+    res.redirect("home");
   }
 };
 
