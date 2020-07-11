@@ -8,10 +8,6 @@ const DOMList = document.getElementById("listArea");
 
 let tagsArray;
 
-const postNewTags = (e) => {
-  e.preventDefault();
-};
-
 const onDelete = (e) => {
   e.preventDefault();
   if (e.offsetX === 0 && e.offsetY === 0) {
@@ -40,19 +36,28 @@ const DOMRender = (tagsArray) => {
     let li = document.createElement("li");
     li.innerHTML = `${eachTag} <input type='hidden' name='tags[]' value=${eachTag}><a><button>&times;</button></a>`;
     DOMList.appendChild(li);
-    li.addEventListener("click", onDelete);
+    li.querySelector("a").addEventListener("click", onDelete);
   });
 };
 
 const eventFunction = (e) => {
   const videoId = e.target.parentNode.parentNode.querySelector(".modalTitle")
     .id;
-  axios.post(`/contents/${videoId}/tagsupdate`, {
-    tags: tagsArray,
-  });
+  axios
+    .post(`/contents/${videoId}/tagsupdate`, {
+      tags: tagsArray,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 };
 
-tagSubmitBtn.addEventListener("click", eventFunction);
+if (tagSubmitBtn) {
+  tagSubmitBtn.addEventListener("click", eventFunction);
+}
 
 const toggleModal = (e) => {
   e.preventDefault();
@@ -71,11 +76,9 @@ const toggleModal = (e) => {
 
   if (Array.isArray(tagsArray) && tagsArray.length) {
     tagsArray = [];
-    console.log(tagsArray);
   } else {
     tagsArray = Array.from(videoOldTags);
     tagsArray = tagsArray.map((each) => each.innerText.replace("#", ""));
-    console.log(tagsArray);
   }
 
   if (modalTitle.innerText !== "") {
@@ -101,11 +104,9 @@ const closeModal = (e) => {
 
   if (Array.isArray(tagsArray) && tagsArray.length) {
     tagsArray = [];
-    console.log(tagsArray);
   } else {
     tagsArray = Array.from(videoOldTags);
     tagsArray = tagsArray.map((each) => each.innerText.replace("#", ""));
-    console.log(tagsArray);
   }
 
   if (modalTitle.innerText !== "") {
