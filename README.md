@@ -189,8 +189,8 @@ Omissions will be added later.
 
 - [x] Bug fix - when editing tags, sample list consists of the most recent content's tags
 - [x] Bug fix - can't delete tags
-- [x] Bug fix - heroku app doesn't display added tags after editing unlike localhost
-- [ ] Bug fix - can't edit tags in video detail page
+- [ ] Bug fix - heroku app doesn't display added tags after editing unlike localhost; however, once refreshed, it work...
+- [x] Bug fix - can't edit tags in video detail page
 - [ ] Bug fix - prevent uploading pictures on mobile
 - [ ] Bug fix - enable video player on iOS devices
 - [ ] Investigate the reason that users can't add tags with comma(,) on mobile
