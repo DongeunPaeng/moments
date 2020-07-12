@@ -1,6 +1,9 @@
 mixin videoSection(video={})
     .max-w-sm.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2
-        video.video-js.block.videoContent.w-full.h-64.object-cover.p-1(src=video.fileUrl controls="true" webkit-playsinline type="video/mp4" preload="true") can't play the video on this browser
+        <video src='http://www.tomodevel.jp/material/video/disneyTour.mp4' width='100%' controls autoplay>
+            |해당 브라우저는 video 태그를 지원하지 않습니다.
+        </video>
+        //-- video.block.videoContent.w-full.h-64.object-cover.p-1(src=video.fileUrl controls="true" webkit-playsinline type="video/mp4" preload="true")=video.fileUrl
         .px-6.py-4
             .flex.justify-start.items-center
                 a(href=`/contents/${video.id}/detail`).text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
@@ -22,7 +25,3 @@ mixin videoSection(video={})
                 .block
                     a(href=`/contents/delete-video/${video.id}`)
                         button.bg-red-600.text-white.py-1.px-4.mt-4.mx-1.rounded.w-sm(class='hover:bg-red-800') Delete
-
-    <video src='http://www.tomodevel.jp/material/video/disneyTour.mp4' width='400' controls autoplay>
-        |해당 브라우저는 video 태그를 지원하지 않습니다.
-    </video>
