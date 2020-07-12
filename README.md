@@ -30,7 +30,6 @@ Omissions will be added later.
 - [x] save files with **aws-sdk & multer-s3**
 - [x] save data on **Atlas**
 - [x] deploy with **heroku**
-- [ ] play video with **video.js**
 
 ---
 
@@ -193,8 +192,8 @@ Omissions will be added later.
 - [x] Bug fix - heroku app doesn't display added tags after editing unlike localhost; however, once refreshed, it work...
 - [x] Bug fix - can't edit tags in video detail page
 - [ ] Bug fix - prevent uploading pictures on mobile
-- [ ] Bug fix - enable video player on iOS devices using video.js
-- [ ] Investigate the reason that users can't add tags with comma(,) on mobile
+- [x] Bug fix - enable video player on iOS devices
+- [ ] Investigate the reason that users can't add tags with comma(,) on android only; on iPhone it works
 - [x] Apply custom domain to the heroku app
 - [x] Understand the difference between HTTP and HTTPS
 - [x] Understand RSA encryption mechanism
@@ -339,3 +338,4 @@ _Chapter 8_<br>
 - addEventListner must be added once. Otherwise the same event will be invoked multiple times.
 - If something fires many times repeatedly, it is highly likely to be the scoping issue of the addEventListener.
 - When posting with axios, I must not redirect or render. I must only send res.status and res.end. Otherwise, the controller will send user duplicate repsonses.
+- Video can't be played on iOS devices unless I change the content-type to 'video/mp4' on aws S3 console.

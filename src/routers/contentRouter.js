@@ -26,6 +26,7 @@ const upload = multer({
   storage: multers3({
     s3,
     bucket: "momentsproject",
+    contentType: multers3.AUTO_CONTENT_TYPE,
     acl: "public-read",
   }),
 });
