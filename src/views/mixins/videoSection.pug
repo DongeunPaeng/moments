@@ -1,6 +1,6 @@
 mixin videoSection(video={})
     .max-w-sm.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2
-        video.video-js.block.videoContent.w-full.h-64.object-cover.p-1(src=video.fileUrl controls="true" playsinline loop muted autoplay type="video/mp4" preload="metadata")
+        video.video-js.block.videoContent.w-full.h-64.object-cover.p-1(src=video.fileUrl controls="true" webkit-playsinline type="video/mp4" preload="true")
         .px-6.py-4
             .flex.justify-start.items-center
                 a(href=`/contents/${video.id}/detail`).text-gray-600.text-xl.mb-2.-mr-2.pr-3.break-words.w-full.videoTitle=video.title
