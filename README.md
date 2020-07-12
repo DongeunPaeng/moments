@@ -338,4 +338,4 @@ _Chapter 8_<br>
 - addEventListner must be added once. Otherwise the same event will be invoked multiple times.
 - If something fires many times repeatedly, it is highly likely to be the scoping issue of the addEventListener.
 - When posting with axios, I must not redirect or render. I must only send res.status and res.end. Otherwise, the controller will send user duplicate repsonses.
-- Video can't be played on iOS devices unless I change the content-type to 'video/mp4' on aws S3 console.
+- Video can't be played on iOS devices because of the wrong content type. To fix this, I have to add contentType property like `contentType: multers3.AUTO_CONTENT_TYPE`.
