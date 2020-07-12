@@ -138,18 +138,15 @@ const onKeyUp = () => {
   document.getElementById("inputArea").addEventListener("keyup", (e) => {
     e.preventDefault();
     let text = e.target.value.trim();
-    if (text.includes(",") || text.includes(" ") || e.keyCode === 32) {
+    if (text.includes(",") || e.keyCode === 32) {
       e.preventDefault();
       try {
-        // if (text.search(" ") !== -1) {
-        // alert("An empty space not allowed.");
-        if (tagsArray.indexOf(text) !== -1) {
+        if (text.search(" ") !== -1) {
+          alert("An empty space not allowed.");
+        } else if (tagsArray.indexOf(text) !== -1) {
           alert("Can't use duplicate tags");
         } else if (text.replace(",", "") !== "") {
           tagsArray.push(text.replace(",", ""));
-          e.target.value = "";
-        } else if (text.replace(" ", "") !== "") {
-          tagsArray.push(text.replace(" ", ""));
           e.target.value = "";
         }
       } catch (err) {
