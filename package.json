@@ -4,7 +4,7 @@
   "description": "video sharing platform",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --watch",
     "server": "nodemon --exec babel-node src/app.js",
     "start": "babel-node src/app.js"
   },
@@ -51,7 +51,6 @@
     "password-validator": "^5.0.3",
     "postcss-cli": "^7.1.1",
     "pug": "^2.0.4",
-    "tailwindcss": "^1.4.4",
-    "video.js": "^7.8.4"
+    "tailwindcss": "^1.4.4"
   }
 }
