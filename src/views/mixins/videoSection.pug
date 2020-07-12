@@ -1,8 +1,6 @@
 mixin videoSection(video={})
     .max-w-sm.rounded.overflow-hidden.shadow-lg.px-2.pt-4.m-2
-        <video src='http://www.tomodevel.jp/material/video/disneyTour.mp4' width='100%' controls autoplay>
-            |해당 브라우저는 video 태그를 지원하지 않습니다.
-        </video>
+        video(src=video.fileUrl width='100%' controls autoplay)
         //-- video.block.videoContent.w-full.h-64.object-cover.p-1(src=video.fileUrl controls="true" webkit-playsinline type="video/mp4" preload="true")=video.fileUrl
         .px-6.py-4
             .flex.justify-start.items-center
