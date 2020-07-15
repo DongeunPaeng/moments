@@ -153,6 +153,7 @@ const onKeyUp = () => {
         console.log(err);
       }
     }
+    console.log(e.keyCode);
     DOMRender(tagsArray);
   });
 };

@@ -195,7 +195,7 @@ Omissions will be added later.
 - [x] Apply custom domain to the heroku app
 - [x] Understand the difference between HTTP and HTTPS
 - [x] Understand RSA encryption mechanism
-- [ ] Investigate the reason that users can't add tags with comma(,) on few browsers
+- [ ] Prevent autoplay on Android
 - [ ] Apply TLS/SSL certificate to the heroku app
 
 ---
@@ -341,3 +341,7 @@ _Chapter 8_<br>
 - When posting with axios, I must not redirect or render. I must only send res.status and res.end. Otherwise, the controller will send user duplicate repsonses.
 
 - Video can't be played on iOS devices because of the wrong content type. To fix this, I have to add contentType property like `contentType: multers3.AUTO_CONTENT_TYPE`.
+
+- To show thumbnail of the video on iPhone, I must add `autoplay="false"` to the video tag. Or, I can add `autoplay` and `muted` as well.
+
+- Keycode of space is not 32 on Chrome for Android. This makes impossible to separate tags by 'space' key.
