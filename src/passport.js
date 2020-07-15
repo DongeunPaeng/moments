@@ -10,8 +10,7 @@ passport.use(
     {
       clientID: process.env.KAKAO_ID,
       clientSecret: process.env.KAKAO_SECRET,
-      callbackURL:
-        "https://shrouded-forest-72950.herokuapp.com/auth/kakao/callback",
+      callbackURL: "https://dongeun.io/auth/kakao/callback",
     },
     kakaoLoginCallback
   )

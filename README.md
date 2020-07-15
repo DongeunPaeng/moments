@@ -195,8 +195,7 @@ Omissions will be added later.
 - [x] Apply custom domain to the heroku app
 - [x] Understand the difference between HTTP and HTTPS
 - [x] Understand RSA encryption mechanism
-- [ ] Prevent autoplay on Android
-- [ ] Apply TLS/SSL certificate to the heroku app
+- [x] Apply TLS/SSL certificate to the heroku app
 
 ---
 
